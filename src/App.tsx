@@ -1,12 +1,15 @@
-import './App.css'
-import Navbar from './components/Navbar';
-function App() {
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/Header";
+import Home from "./components/Home";
 
+function App() {
   return (
-    <div className='App'>
-      <Navbar />
+    <div className="bg-dark text-white">
+      <Header />
+      <Home />
     </div>
   );
 }
 
-export default App
+export default App;
