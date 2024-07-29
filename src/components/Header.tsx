@@ -1,8 +1,6 @@
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/esm/Container";
-import NavDropdown from "react-bootstrap/esm/NavDropdown";
-import Button from "react-bootstrap/esm/Button";
 
 function Header() {
   return (

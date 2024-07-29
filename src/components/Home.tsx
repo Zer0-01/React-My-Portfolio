@@ -7,7 +7,7 @@ import Button from "react-bootstrap/esm/Button";
 
 function Home() {
   return (
-    <div>
+    <div style={{minHeight: '100vh'}}>
       <Container>
         <div className="d-flex justify-content-center align-items-center pt-5 pb-3">
           <Image src={Profile} roundedCircle width={200} height={200} />
