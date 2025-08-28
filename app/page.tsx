@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 
@@ -34,6 +35,13 @@ export default function Home() {
 
 
       </div>
+      <div className="flex gap-x-2">
+        <Button className="flex-1">Download CV</Button>
+        <Button className="flex-1">Download CV</Button>
+      </div>
+
+
+
 
     </div>
   );
