@@ -1,4 +1,5 @@
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Github, Linkedin } from "lucide-react";
 import Image from "next/image";
 
@@ -39,6 +40,17 @@ export default function Home() {
         <Button className="flex-1">Download CV</Button>
         <Button className="flex-1">Download CV</Button>
       </div>
+
+      <Tabs defaultValue="account" >
+        <TabsList className="w-full" >
+          <TabsTrigger value="account">Account</TabsTrigger>
+          <TabsTrigger value="password">Password</TabsTrigger>
+        </TabsList>
+        <TabsContent value="account"><div className="grid grid-cols-1">
+          <Image src="/aonic-agri-1.jpg" alt="Vercel Logo" width={400} height={400} className="text-center w-3/5" />
+        </div></TabsContent>
+        <TabsContent value="password">Change your password here.</TabsContent>
+      </Tabs>
 
 
 
