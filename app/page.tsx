@@ -1,28 +1,47 @@
 "use client";
 
-import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Github, Linkedin } from "lucide-react";
+import Link from 'next/link';
+
 import Image from "next/image";
+
 
 
 export default function Home() {
   return (
     <div className="grid grid-cols-1 p-6">
       <div className="flex justify-center">
-        <Image src="/next.svg" alt="Vercel Logo" width={400} height={400} className="w-3/5" />
-      </div>
+        <div className="w-1/2 aspect-square overflow-hidden rounded-full border-2">
+          <Image
+            src="/profile-picture.jpeg"
+            alt="Profile Picture"
+            width={500}
+            height={500}
+            className="object-cover w-full h-full"
+          />
+        </div>      </div>
       <div >
         <h1 className="text-center">Anas Zulkifli</h1>
         <h2 className="text-center">Mobile Developer</h2>
         <div className="flex justify-center gap-2">
-          <Button variant="secondary" size="icon" className="size-8 bg-blue-500" onClick={() => window.open("www.linkedin.com/in/anas-zulkifli-mohd-jeffry")}>
-            <Linkedin color="white" fill="white" />
+          <Button asChild variant="secondary" size="icon" className="size-8 bg-blue-500 hover:bg-blue-400">
+
+            <a
+              href="https://www.linkedin.com/in/anas-zulkifli-mohd-jeffry"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Linkedin color="white" fill="white" />
+            </a>
           </Button>
-          <Button variant="secondary" size="icon" className="size-8 bg-black">
-            <Github color="white" fill="white" />
+          <Button variant="secondary" size="icon" className="size-8 bg-black hover:bg-gray-400">
+            <a href="https://github.com/Zer0-01"
+              target="_blank"
+              rel="noopener noreferrer"> <Github color="white" fill="white" /></a>
+
           </Button>
         </div>
 
