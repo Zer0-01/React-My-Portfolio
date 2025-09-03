@@ -13,8 +13,8 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="grid grid-cols-1 p-6 gap-6 md:grid-cols-4">
-      <div className="flex justify-center  md:col-start-2">
-        <div className="w-1/2 aspect-square overflow-hidden rounded-full border-2">
+      <div className="flex justify-center md:col-span-2  md:col-start-2">
+        <div className="w-1/2 aspect-square overflow-hidden rounded-full border-2 md:w-1/3">
           <Image
             src="/profile-picture.jpeg"
             alt="Profile Picture"
@@ -24,10 +24,10 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-2 " >
-        <h1 className="text-center text-3xl font-bold md:text-left">Anas Zulkifli</h1>
-        <h2 className="text-center md:text-left">Mobile Developer</h2>
-        <div className="flex justify-center gap-2 md:justify-start">
+      <div className="flex flex-col gap-2 md:col-span-2 md:col-start-2 " >
+        <h1 className="text-center text-3xl font-bold">Anas Zulkifli</h1>
+        <h2 className="text-center ">Mobile Developer</h2>
+        <div className="flex justify-center gap-2">
           <Button asChild variant="secondary" size="icon" className="size-8 bg-blue-500 hover:bg-blue-400">
 
             <a
@@ -93,15 +93,15 @@ export default function Home() {
           <TabsTrigger value="account">Porfolio</TabsTrigger>
           <TabsTrigger value="password">Skills</TabsTrigger>
         </TabsList>
-        <TabsContent value="account"><div className="grid grid-cols-1">
-          <Card className="my-2">
+        <TabsContent value="account"><div className="grid grid-cols-1 gap-2 md:grid-cols-2">
+          <Card >
             <CardHeader>
               <CardTitle>Aonic Agriculture App</CardTitle>
               <CardDescription>All-in-one farming companion — browse agrochemical products, shop online or in-store, redeem vouchers, and find nearby branches with ease.</CardDescription>
             </CardHeader>
 
           </Card>
-          <Card className="my-2">
+          <Card >
             <CardHeader>
               <CardTitle>IseBa</CardTitle>
               <CardDescription>Designed to make learning Malay simple and engaging — practice spelling, explore syllables, and perfect your pronunciation step by step.</CardDescription>
@@ -109,7 +109,7 @@ export default function Home() {
 
           </Card>
         </div></TabsContent>
-        <TabsContent value="password">Change your password here.</TabsContent>
+        <TabsContent value="password">Coming Soon.</TabsContent>
       </Tabs>
 
 
