@@ -1,12 +1,10 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Github, Linkedin } from "lucide-react";
-import Link from 'next/link';
-
 import Image from "next/image";
+import { AppProjectCard } from "@/components/app-project-card";
 
 
 
@@ -25,8 +23,8 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col gap-2 md:col-span-2 md:col-start-2 " >
-        <h1 className="text-center text-3xl font-bold">Anas Zulkifli</h1>
-        <h2 className="text-center ">Mobile Developer</h2>
+        <h1 className="text-center text-4xl font-bold">Anas Zulkifli</h1>
+        <h2 className="text-center text-2xl ">Mobile Developer</h2>
         <div className="flex justify-center gap-2">
           <Button asChild variant="secondary" size="icon" className="size-8 bg-blue-500 hover:bg-blue-400">
 
@@ -94,20 +92,14 @@ export default function Home() {
           <TabsTrigger value="password">Skills</TabsTrigger>
         </TabsList>
         <TabsContent value="account"><div className="grid grid-cols-1 gap-2 md:grid-cols-2">
-          <Card >
-            <CardHeader>
-              <CardTitle>Aonic Agriculture App</CardTitle>
-              <CardDescription>All-in-one farming companion — browse agrochemical products, shop online or in-store, redeem vouchers, and find nearby branches with ease.</CardDescription>
-            </CardHeader>
 
-          </Card>
-          <Card >
-            <CardHeader>
-              <CardTitle>IseBa</CardTitle>
-              <CardDescription>Designed to make learning Malay simple and engaging — practice spelling, explore syllables, and perfect your pronunciation step by step.</CardDescription>
-            </CardHeader>
 
-          </Card>
+          <AppProjectCard title="Aonic Agriculture App" description="All-in-one farming companion — browse agrochemical products, shop online or in-store, redeem vouchers, and find nearby branches with ease." />
+          <AppProjectCard title="MIST Flight App" description="Drone mission execution and management system built for precision agriculture. Plan, control, and monitor blanket spraying and point-to-point missions with ease." />
+          <AppProjectCard title="E-Wedding Invitation" description="All-in-one digital wedding companion: RSVP tracking, guest messaging, gift registry, and venue navigation made simple." />
+          <AppProjectCard title="Portable Data Terminal (PDT)" description="Efficient inventory control. Scan barcodes, manage stock levels, and sync data seamlessly across your system." />
+          <AppProjectCard title="Parent-Teacher Communication Tool" description="Smart platform that connects schools and families. Track student attendance, get homework updates, access important documents, and communicate with teachers instantly." />
+          <AppProjectCard title="IseBa" description="Designed to make learning Malay simple and engaging — practice spelling, explore syllables, and perfect your pronunciation step by step." />
         </div></TabsContent>
         <TabsContent value="password">Coming Soon.</TabsContent>
       </Tabs>
