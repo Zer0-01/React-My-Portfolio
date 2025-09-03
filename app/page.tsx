@@ -90,7 +90,7 @@ export default function Home() {
 
       <Tabs defaultValue="account" className="md:col-span-2 md:col-start-2" >
         <TabsList className="w-full " >
-          <TabsTrigger value="account">Porfolio</TabsTrigger>
+          <TabsTrigger value="account">Portfolio</TabsTrigger>
           <TabsTrigger value="password">Skills</TabsTrigger>
         </TabsList>
         <TabsContent value="account"><div className="grid grid-cols-1 gap-2 md:grid-cols-2">
