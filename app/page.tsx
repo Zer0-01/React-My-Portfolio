@@ -12,8 +12,8 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-1 p-6 gap-6">
-      <div className="flex justify-center">
+    <div className="grid grid-cols-1 p-6 gap-6 md:grid-cols-4">
+      <div className="flex justify-center  md:col-start-2">
         <div className="w-1/2 aspect-square overflow-hidden rounded-full border-2">
           <Image
             src="/profile-picture.jpeg"
@@ -24,10 +24,10 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex flex-col gap-2" >
-        <h1 className="text-center text-3xl font-bold">Anas Zulkifli test</h1>
-        <h2 className="text-center">Mobile Developer</h2>
-        <div className="flex justify-center gap-2">
+      <div className="flex flex-col gap-2 " >
+        <h1 className="text-center text-3xl font-bold md:text-left">Anas Zulkifli</h1>
+        <h2 className="text-center md:text-left">Mobile Developer</h2>
+        <div className="flex justify-center gap-2 md:justify-start">
           <Button asChild variant="secondary" size="icon" className="size-8 bg-blue-500 hover:bg-blue-400">
 
             <a
@@ -48,7 +48,7 @@ export default function Home() {
 
 
       </div>
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 md:col-start-2 md:col-span-2">
         <div className="flex flex-col items-center text-center">
           <h3>2</h3>
           <h3>Years of work experience</h3>
@@ -64,7 +64,7 @@ export default function Home() {
         </div>
 
       </div>
-      <div className="flex gap-x-2">
+      <div className="flex gap-x-2 md:col-start-2 md:col-span-2">
         <Button asChild className="flex-1">
           <a
             href="https://drive.google.com/file/d/14HKcklVouz4X_8W8tHWVBGfNnI2Tkovt/view?usp=sharing"
@@ -88,8 +88,8 @@ export default function Home() {
           </a>
         </Button>      </div>
 
-      <Tabs defaultValue="account" >
-        <TabsList className="w-full" >
+      <Tabs defaultValue="account" className="md:col-span-2 md:col-start-2" >
+        <TabsList className="w-full " >
           <TabsTrigger value="account">Porfolio</TabsTrigger>
           <TabsTrigger value="password">Skills</TabsTrigger>
         </TabsList>
