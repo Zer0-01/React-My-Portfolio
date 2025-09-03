@@ -1,9 +1,12 @@
+"use client";
+
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import { Button } from "@/components/ui/button";
 import { Card, CardAction, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Github, Linkedin } from "lucide-react";
 import Image from "next/image";
+
 
 export default function Home() {
   return (
@@ -14,9 +17,13 @@ export default function Home() {
       <div >
         <h1 className="text-center">Anas Zulkifli</h1>
         <h2 className="text-center">Mobile Developer</h2>
-        <div className="flex justify-center">
-          <Linkedin />
-          <Github />
+        <div className="flex justify-center gap-2">
+          <Button variant="secondary" size="icon" className="size-8 bg-blue-500" onClick={() => window.open("www.linkedin.com/in/anas-zulkifli-mohd-jeffry")}>
+            <Linkedin color="white" fill="white" />
+          </Button>
+          <Button variant="secondary" size="icon" className="size-8 bg-black">
+            <Github color="white" fill="white" />
+          </Button>
         </div>
 
 
