@@ -25,7 +25,7 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col gap-2" >
-        <h1 className="text-center text-3xl font-bold">Anas Zulkifli</h1>
+        <h1 className="text-center text-3xl font-bold">Anas Zulkifli test</h1>
         <h2 className="text-center">Mobile Developer</h2>
         <div className="flex justify-center gap-2">
           <Button asChild variant="secondary" size="icon" className="size-8 bg-blue-500 hover:bg-blue-400">
