@@ -12,7 +12,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="grid grid-cols-1 p-6">
+    <div className="grid grid-cols-1 p-6 gap-6">
       <div className="flex justify-center">
         <div className="w-1/2 aspect-square overflow-hidden rounded-full border-2">
           <Image
@@ -22,9 +22,10 @@ export default function Home() {
             height={500}
             className="object-cover w-full h-full"
           />
-        </div>      </div>
-      <div >
-        <h1 className="text-center">Anas Zulkifli</h1>
+        </div>
+      </div>
+      <div className="flex flex-col gap-2" >
+        <h1 className="text-center text-3xl font-bold">Anas Zulkifli</h1>
         <h2 className="text-center">Mobile Developer</h2>
         <div className="flex justify-center gap-2">
           <Button asChild variant="secondary" size="icon" className="size-8 bg-blue-500 hover:bg-blue-400">
@@ -62,17 +63,35 @@ export default function Home() {
           <h3>Personal side projects</h3>
         </div>
 
-
       </div>
       <div className="flex gap-x-2">
-        <Button className="flex-1">Download CV</Button>
-        <Button variant="outline" className="flex-1  border-foreground">Contact Me</Button>
-      </div>
+        <Button asChild className="flex-1">
+          <a
+            href="https://drive.google.com/file/d/14HKcklVouz4X_8W8tHWVBGfNnI2Tkovt/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download CV
+          </a>
+        </Button>
+        <Button
+          asChild
+          variant="outline"
+          className="flex-1 border-foreground"
+        >
+          <a
+            href="https://wa.me/601154066082"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Contact Me
+          </a>
+        </Button>      </div>
 
       <Tabs defaultValue="account" >
         <TabsList className="w-full" >
-          <TabsTrigger value="account">Account</TabsTrigger>
-          <TabsTrigger value="password">Password</TabsTrigger>
+          <TabsTrigger value="account">Porfolio</TabsTrigger>
+          <TabsTrigger value="password">Skills</TabsTrigger>
         </TabsList>
         <TabsContent value="account"><div className="grid grid-cols-1">
           <Card className="my-2">
