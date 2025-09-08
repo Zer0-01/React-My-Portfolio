@@ -101,7 +101,31 @@ export default function Home() {
           <AppProjectCard title="Parent-Teacher Communication Tool" description="Smart platform that connects schools and families. Track student attendance, get homework updates, access important documents, and communicate with teachers instantly." />
           <AppProjectCard title="IseBa" description="Designed to make learning Malay simple and engaging — practice spelling, explore syllables, and perfect your pronunciation step by step." />
         </div></TabsContent>
-        <TabsContent value="password">Coming Soon.</TabsContent>
+        <TabsContent value="password">
+          <div className="grid grid-cols-6 gap-10 text-center">
+            {[
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg", label: "Flutter" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg", label: "Dart" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kotlin/kotlin-original.svg", label: "Kotlin" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jetpackcompose/jetpackcompose-original.svg", label: "Jetpack Compose" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/swift/swift-original.svg", label: "Swift" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg", label: "Git" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg", label: "GitHub" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg", label: "HTML5" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg", label: "TailwindCSS" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg", label: "React" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg", label: "Next.js" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg", label: "JavaScript" },
+              { src: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg", label: "TypeScript" },
+            ].map((tech) => (
+              <div key={tech.label} className="flex flex-col items-center">
+                <img src={tech.src} alt={tech.label}  />
+                <span className="mt-2 text-sm">{tech.label}</span>
+              </div>
+            ))}
+          </div>
+        </TabsContent>
+
       </Tabs>
 
 
