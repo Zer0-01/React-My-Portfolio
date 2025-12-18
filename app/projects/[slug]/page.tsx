@@ -46,9 +46,12 @@ export default function ProjectDetailPage({ params }: Props) {
 
                 <div className="flex flex-wrap gap-4 mt-4 text-sm text-gray-500">
                     {project.organization && <span>Organization: {project.organization}</span>}
+                    {project.company && <span>Company: {project.company}</span>}
+                    {project.client && <span>Client: {project.client}</span>}
                     {project.role && <span>Role: {project.role}</span>}
                     {project.projectType && <span>Type: {project.projectType}</span>}
                 </div>
+
             </header>
 
 

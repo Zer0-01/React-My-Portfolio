@@ -4,7 +4,9 @@ export interface Project {
     summary: string;
     description: string;
     role?: string;
-    organization?: string;      // can be client, company, or organization
+    organization?: string; // optional
+    company?: string;      // optional
+    client?: string;       // optional
     year?: number;
     projectType?: "mobile" | "web" | "iot" | "backend" | "fullstack";
     features?: string[];
@@ -24,31 +26,46 @@ export interface Project {
 }
 
 
+
 export const projects: Project[] = [
     {
         slug: "aonic-agriculture",
         title: "Aonic Agriculture App",
-        summary: "Aonic Agriculture is your all-in-one agriculture platform, designed to support farmers and plantation owners across Malaysia.\n\nWith Aonic Agriculture, you can …\n✔ Purchase a wide range of agrochemicals (Aon-Agro) with credit\n✔ Apply for our flexible financing program (Aonic Flex) with ease - think \"Shop Now, Pay Later\"!\n✔ Locate nearby branches, contact operators, and navigate with built-in maps.",
-        description: "Aonic Agriculture provides a seamless digital experience for plantation management. Farmers and plantation owners can browse and purchase agrochemical products, access credit financing through Aonic Flex, and locate branches using an integrated map system. The app ensures smooth operations in inventory, orders, and field tracking, reducing manual workload and increasing efficiency across plantations.",
+        summary: `Aonic Agriculture is a consumer-focused mobile app that empowers farmers and plantation owners to purchase agrochemicals, manage field calculations, and locate branches efficiently.
 
-        role: "Flutter Mobile Developer",
-        organization: "Aonic",
+With Aonic Agriculture, you can:
+✔ Browse a wide range of agrochemical products (Aon-Agro) in an intuitive catalog
+✔ Add items to a shopping cart, checkout, and pay seamlessly
+✔ Apply for Aonic Flex, our flexible "Shop Now, Pay Later" credit program with detailed credit info
+✔ Use the built-in calculator for spray and tank volume calculations
+✔ Perform unit conversions for accurate measurements
+✔ Locate nearby branches, contact operators, and navigate with integrated maps
+✔ Access the calculator offline, even in remote plantation areas`,
+
+        description: `Aonic Agriculture combines e-commerce, field calculation tools, and branch location into a single, user-friendly mobile app for farmers and plantation owners. Users can browse agrochemical products, manage a shopping cart, complete secure checkout, and pay using the Aonic Flex credit program with detailed credit tracking. The app also includes a spray and tank calculator with unit conversion that works offline for remote fields. A built-in branch locator with integrated maps allows users to find nearby branches, contact operators, and navigate efficiently. Designed to streamline purchasing, improve calculation accuracy, and provide convenience, Aonic Agriculture ensures farmers can work efficiently both online and offline.`,
+
+        role: "Mobile Developer",
+        company: "Aonic",
         year: 2025,
         projectType: "mobile",
 
         features: [
-            "Product listing and e-commerce",
-            "Branch locator with maps",
-            "Flexible credit system (Aonic Flex)",
-            "Order management and inventory tracking",
-            "Offline access for remote areas"
+            "Product catalog with e-commerce",
+            "Shopping cart and secure checkout",
+            "Flexible credit system (Aonic Flex) with credit details",
+            "Spray and tank volume calculator",
+            "Unit conversion for accurate measurements",
+            "Offline access for calculator",
+            "Branch locator with integrated maps"
         ],
 
         outcomes: [
-            "Streamlined agrochemical purchasing process",
-            "Reduced manual field operations by 50%",
-            "Increased user engagement through flexible financing",
-            "Improved operational efficiency for branch management"
+            "Simplified agrochemical purchasing process",
+            "Enabled shopping with flexible credit options",
+            "Accurate field calculations with spray and tank calculator",
+            "Offline calculator ensures usability in remote areas",
+            "Easier access to branches and operator support",
+            "Improved convenience and efficiency for consumers"
         ],
 
         technologies: ["Flutter", "Bloc", "Dio", "AutoRoute", "Git"],
@@ -68,6 +85,7 @@ export const projects: Project[] = [
             android: "https://play.google.com/store/apps/details?id=com.aonic.aonagri&hl=en"
         },
     }
+
     ,
 
     {
@@ -149,6 +167,7 @@ export const projects: Project[] = [
         description: "Vortex Academia is an official website for the football club, designed to showcase team information, player profiles, and upcoming events. The site features a clean and responsive landing page with intuitive navigation. Future updates include a product section and more interactive content for fans.",
         role: "Web Developer",
         organization: "LakarSoft",
+        client: "Vortex Academia",
         year: 2025,
         projectType: "web",
         features: [
@@ -174,6 +193,7 @@ export const projects: Project[] = [
         summary: "Mobile app to help kids learn Bahasa Melayu, focusing on spelling and pronunciation.",
         description: "ISeBa is an interactive educational app designed to teach children Bahasa Melayu through engaging exercises. Kids can learn syllables, practice pronunciation, and listen to words being spoken aloud using built-in text-to-speech functionality. The app aims to make learning fun and intuitive with an interactive interface.",
         role: "Flutter Developer",
+        client: "School Teacher",
         year: 2025,
         projectType: "mobile",
         features: [
@@ -185,7 +205,31 @@ export const projects: Project[] = [
         tools: ["VS Code"],
         video: "/projects/iseba/video_1.mp4",
         github: "https://github.com/Zer0-01/Flutter-Readingapp",
+    },
+    {
+        slug: "muzika-kata",
+        title: "Muzika Kata",
+        summary: "A web app to make learning Bahasa Melayu more engaging by combining musical tones with words.",
+        description: "Muzika Kata helps students learn Bahasa Melayu in a fun and interactive way. By associating words with musical notes, learners can improve memory retention and pronunciation while enjoying a gamified learning experience. Teachers can use it as a supplementary tool in the classroom to enhance language learning.",
+        client: "School Teacher",
+        year: 2025,
+        projectType: "web",
+        features: [
+            "Input words and listen to corresponding musical tones",
+            "Interactive learning experience combining music and language"
+        ],
+        technologies: ["Next.js"],
+        tools: ["VS Code", "Netlify", "GitHub"],
+        images: [
+            "/projects/muzika-kata/photo_1.png",
+            "/projects/muzika-kata/photo_2.png",
+
+
+        ],
+        github: "https://github.com/Zer0-01/next-musika-kata",
+        link: "https://muzika-kata.netlify.app/"
     }
+
 
 
 
