@@ -2,7 +2,7 @@
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { projects } from "@/data/projects";
-import { AppProjectCard } from "@/components/app-project-card";
+import { AppProjectCard } from "@/components/AppProjectCard";
 import { SkillsGrid } from "./SkillsGrid";
 
 export function ProjectTabs() {

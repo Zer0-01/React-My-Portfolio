@@ -1,8 +1,8 @@
 export const projects = [
-    { title: "Aonic Agriculture App", description: "" },
-    { title: "MIST Flight App", description: "" },
-    { title: "E-Wedding Invitation", description: "" },
-    { title: "Portable Data Terminal", description: "" },
-    { title: "Parent-Teacher Tool", description: "" },
-    { title: "IseBa", description: "" },
+    { slug: "aonic-agriculture", title: "Aonic Agriculture App", description: "" },
+    { slug: "mist-flight", title: "MIST Flight App", description: "" },
+    { slug: "e-wedding-invitation", title: "E-Wedding Invitation", description: "" },
+    { slug: "portable-data-terminal", title: "Portable Data Terminal", description: "" },
+    { slug: "parent-teacher-tool", title: "Parent-Teacher Tool", description: "" },
+    { slug: "iseba", title: "IseBa", description: "" },
 ];
