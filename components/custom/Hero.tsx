@@ -6,7 +6,7 @@ import { Github, Linkedin } from "lucide-react";
 
 export function Hero() {
     return (
-        <section className="flex flex-col items-center justify-center gap-4 text-center py-12 px-4 md:py-20 md:px-0">
+        <section className="flex flex-col items-center justify-center gap-4 text-center py-12 px-4 md:py-4 md:px-0">
 
             {/* Profile Image */}
             <div className="w-36 h-36 md:w-48 md:h-48 overflow-hidden rounded-full border-2 md:border-4 border-gray-200 shadow-lg transition-transform hover:scale-105">
