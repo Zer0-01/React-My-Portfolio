@@ -112,13 +112,17 @@ export default function ProjectDetailPage({ params }: Props) {
             {project.video && (
                 <section className="space-y-4">
                     <h2 className="text-xl font-semibold tracking-tight">Demo Video</h2>
-                    <video
-                        src={project.video}
-                        controls
-                        className="rounded-xl w-full max-w-4xl mx-auto shadow-md border bg-black"
-                    />
+
+                    <div className="relative w-full max-w-4xl mx-auto rounded-xl overflow-hidden border shadow-md bg-black">
+                        <video
+                            src={project.video}
+                            controls
+                            className="w-full h-auto max-h-[80vh] object-contain"
+                        />
+                    </div>
                 </section>
             )}
+
 
 
             {/* FEATURES */}

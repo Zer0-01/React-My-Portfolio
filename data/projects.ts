@@ -167,7 +167,26 @@ export const projects: Project[] = [
         ],
         github: "https://github.com/Zer0-01/next-vortex",
         link: "https://vortex-academia.netlify.app/"
+    },
+    {
+        slug: "iseba",
+        title: "ISeBa",
+        summary: "Mobile app to help kids learn Bahasa Melayu, focusing on spelling and pronunciation.",
+        description: "ISeBa is an interactive educational app designed to teach children Bahasa Melayu through engaging exercises. Kids can learn syllables, practice pronunciation, and listen to words being spoken aloud using built-in text-to-speech functionality. The app aims to make learning fun and intuitive with an interactive interface.",
+        role: "Flutter Developer",
+        year: 2025,
+        projectType: "mobile",
+        features: [
+            "Input syllables",
+            "Syllable pronunciation",
+            "Word pronunciation"
+        ],
+        technologies: ["Flutter", "Text-to-Speech"],
+        tools: ["VS Code"],
+        video: "/projects/iseba/video_1.mp4",
+        github: "https://github.com/Zer0-01/Flutter-Readingapp",
     }
+
 
 
 
