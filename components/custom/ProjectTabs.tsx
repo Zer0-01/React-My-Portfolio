@@ -16,20 +16,22 @@ export function ProjectTabs() {
                 transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
                 <Tabs defaultValue="portfolio" className="w-full">
-                    <TabsList className="w-full grid grid-cols-2 bg-black/40 backdrop-blur-md border border-white/10 rounded-sm p-1 shadow-2xl">
-                        <TabsTrigger
-                            value="portfolio"
-                            className="flex-1 rounded-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-muted-foreground uppercase tracking-widest font-semibold text-xs md:text-sm py-3 transition-all duration-500"
-                        >
-                            Portfolio
-                        </TabsTrigger>
-                        <TabsTrigger
-                            value="skills"
-                            className="flex-1 rounded-sm data-[state=active]:bg-primary data-[state=active]:text-primary-foreground text-muted-foreground uppercase tracking-widest font-semibold text-xs md:text-sm py-3 transition-all duration-500"
-                        >
-                            Skills
-                        </TabsTrigger>
-                    </TabsList>
+                    <div className="flex justify-center mb-12">
+                        <TabsList className="flex h-auto w-full max-w-md bg-black/40 backdrop-blur-xl border border-white/5 rounded-full p-1 shadow-2xl">
+                            <TabsTrigger
+                                value="portfolio"
+                                className="flex-1 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg text-muted-foreground uppercase tracking-[0.2em] font-bold text-[10px] md:text-xs py-2.5 transition-all duration-300 hover:text-foreground"
+                            >
+                                Portfolio
+                            </TabsTrigger>
+                            <TabsTrigger
+                                value="skills"
+                                className="flex-1 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg text-muted-foreground uppercase tracking-[0.2em] font-bold text-[10px] md:text-xs py-2.5 transition-all duration-300 hover:text-foreground"
+                            >
+                                Skills
+                            </TabsTrigger>
+                        </TabsList>
+                    </div>
 
                     <TabsContent
                         value="portfolio"
