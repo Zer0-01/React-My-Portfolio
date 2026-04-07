@@ -1,5 +1,6 @@
 "use client";
 
+import { use } from "react";
 import { notFound } from "next/navigation";
 import { projects } from "@/data/projects";
 import Image from "next/image";
@@ -10,11 +11,12 @@ import { ChevronLeft, ExternalLink, Github } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface Props {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }
 
 export default function ProjectDetailPage({ params }: Props) {
-    const project = projects.find((p) => p.slug === params.slug);
+    const { slug } = use(params);
+    const project = projects.find((p) => p.slug === slug);
     if (!project) return notFound();
 
     return (
