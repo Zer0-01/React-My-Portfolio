@@ -34,7 +34,7 @@ export function AppProjectCard({
                     <CardDescription className="text-muted-foreground line-clamp-3 leading-relaxed">{description}</CardDescription>
 
                     {/* Additional info */}
-                    <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider text-muted-foreground/60 mt-2">
+                    <div className="flex flex-wrap gap-2 text-[10px] uppercase tracking-wider text-muted-foreground mt-2">
                         {year && <span>{year}</span>}
                         {projectType && <span className="capitalize">{projectType}</span>}
                         {role && <span>{role}</span>}

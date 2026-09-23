@@ -58,7 +58,7 @@ export default function ProjectDetailPage({ params }: Props) {
                             {project.title}
                         </h1>
 
-                        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground/80 font-medium">
+                        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground font-medium">
                             {project.role && (
                                 <span className="flex items-center gap-1.5">
                                     <span className="w-1 h-1 rounded-full bg-primary/50" />
@@ -89,7 +89,7 @@ export default function ProjectDetailPage({ params }: Props) {
                         )}
 
                         {project.description && (
-                            <p className="text-muted-foreground/80 text-base md:text-lg leading-relaxed">
+                            <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
                                 {project.description}
                             </p>
                         )}
