@@ -1,95 +1,110 @@
 "use client";
 
 import Image from "next/image";
+import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin } from "lucide-react";
-import { motion } from "framer-motion";
+
+const cvUrl =
+  "https://docs.google.com/document/d/1Ft2fg1_lMUqF9WITtQ9AK5HUFbL3ZzJd/edit?usp=drive_link&ouid=113577497045470240069&rtpof=true&sd=true";
+
+const profileLinks = [
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/anas-zulkifli-mohd-jeffry",
+  },
+  { label: "GitHub", href: "https://github.com/Zer0-01" },
+  { label: "View CV", href: cvUrl },
+];
 
 export function Hero() {
-    return (
-        <section className="flex flex-col items-center justify-center gap-6 text-center py-16 px-4 md:py-24 md:px-0 relative">
-            {/* Profile Image */}
-            <motion.div
-                initial={{ opacity: 0, scale: 0.8, filter: "blur(10px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-                className="w-40 h-40 md:w-56 md:h-56 overflow-hidden rounded-full border border-primary/30 shadow-sm relative group"
-            >
-                <div className="absolute inset-0 ring-1 ring-inset ring-border rounded-full z-10 transition-transform duration-700 pointer-events-none" />
-                <Image
-                    src="/profile-picture.jpeg"
-                    alt="Profile Picture"
-                    width={500}
-                    height={500}
-                    className="object-cover w-full h-full transition-transform duration-700 group-hover:scale-110"
-                    priority
-                />
-            </motion.div>
+  const prefersReducedMotion = useReducedMotion();
 
-            {/* Name and Title */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                className="flex flex-col items-center gap-2 mt-4"
-            >
-                <h1 className="text-display font-semibold text-foreground">
-                    Anas Zulkifli
-                </h1>
-                <p className="font-mono text-label text-secondary-foreground">
-                    Mobile Developer
-                </p>
-            </motion.div>
+  return (
+    <section
+      aria-labelledby="hero-heading"
+      className="flex min-h-[80svh] w-full items-center py-16 md:py-24"
+    >
+      <div className="flex max-w-4xl flex-col items-start">
+        <div className="flex items-center gap-4">
+          <motion.div
+            initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="relative size-16 shrink-0 overflow-hidden rounded-full border border-border bg-card md:size-20"
+          >
+            <Image
+              src="/profile-picture.jpeg"
+              alt="Portrait of Anas Zulkifli"
+              fill
+              sizes="(min-width: 768px) 80px, 64px"
+              className="object-cover"
+              priority
+            />
+          </motion.div>
 
-            {/* Short Introduction */}
-            <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                className="max-w-2xl text-muted-foreground text-sm md:text-base leading-relaxed font-light mt-2 md:mt-4"
-            >
-                Passionate about building intuitive mobile and web applications that solve real-world problems. Experienced in Flutter, Next.js, and modern web technologies, with a focus on powerful design and cinematic performance.
-            </motion.p>
+          <div>
+            <p className="font-semibold text-foreground">Anas Zulkifli</p>
+            <p className="mt-1 font-mono text-label text-secondary-foreground">
+              Product-focused developer
+            </p>
+          </div>
+        </div>
 
-            {/* Social Links */}
-            <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                className="flex gap-6 mt-6 md:mt-8"
-            >
-                <Button
-                    asChild
-                    size="icon"
-                    variant="outline"
-                    className="w-12 h-12 rounded-full border-secondary-foreground/20 text-secondary-foreground hover:bg-secondary-foreground/10 hover:border-secondary-foreground/50 transition-colors duration-200"
-                >
-                    <a
-                        href="https://www.linkedin.com/in/anas-zulkifli-mohd-jeffry"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="LinkedIn Profile"
-                    >
-                        <Linkedin className="w-5 h-5 md:w-6 md:h-6" />
-                    </a>
-                </Button>
+        <h1
+          id="hero-heading"
+          className="mt-8 max-w-4xl text-display text-foreground"
+        >
+          I build digital products from idea to launch.
+        </h1>
 
-                <Button
-                    asChild
-                    size="icon"
-                    variant="outline"
-                    className="w-12 h-12 rounded-full border-secondary-foreground/20 text-secondary-foreground hover:bg-secondary-foreground/10 hover:border-secondary-foreground/50 transition-colors duration-200"
-                >
-                    <a
-                        href="https://github.com/Zer0-01"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="GitHub Profile"
-                    >
-                        <Github className="w-5 h-5 md:w-6 md:h-6" />
-                    </a>
-                </Button>
-            </motion.div>
-        </section>
-    );
+        <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+          I turn real problems into clear, reliable digital experiences—taking
+          ownership from early thinking through development and release.
+        </p>
+
+        <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+          <Button asChild className="h-12 px-6 text-base font-semibold">
+            <a
+              href="https://wa.me/601154066082"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Let&apos;s work together
+              <ArrowUpRight aria-hidden="true" />
+            </a>
+          </Button>
+
+          <Button
+            asChild
+            variant="outline"
+            className="h-12 border-border bg-transparent px-6 text-base font-semibold"
+          >
+            <a href="#work">
+              View my work
+              <ArrowDown aria-hidden="true" />
+            </a>
+          </Button>
+        </div>
+
+        <nav
+          aria-label="Professional profiles"
+          className="mt-8 flex flex-wrap items-center gap-x-5 gap-y-3"
+        >
+          {profileLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rounded-sm font-mono text-label text-secondary-foreground underline-offset-4 transition-colors duration-200 hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+            >
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </section>
+  );
 }

@@ -8,7 +8,10 @@ import { motion } from "framer-motion";
 
 export function ProjectTabs() {
     return (
-        <section className="w-full max-w-5xl mx-auto px-4 z-10 relative mt-12 mb-20">
+        <section
+            id="work"
+            className="relative z-10 mx-auto mb-20 mt-12 w-full max-w-5xl scroll-mt-8 px-4"
+        >
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}

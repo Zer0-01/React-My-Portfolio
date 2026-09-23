@@ -1,15 +1,12 @@
-import { CTAButtons } from "@/components/custom/CTAButton";
 import { Hero } from "@/components/custom/Hero";
 import { ProjectTabs } from "@/components/custom/ProjectTabs";
 import { Stats } from "@/components/custom/Stats";
 
-
 export default function Home() {
   return (
-    <main className="container mx-auto px-4 py-10 flex flex-col items-center gap-10">
+    <main className="mx-auto flex max-w-6xl flex-col items-center gap-16 px-5 pb-10 md:px-8">
       <Hero />
       <Stats />
-      <CTAButtons />
       <ProjectTabs />
     </main>
   );
