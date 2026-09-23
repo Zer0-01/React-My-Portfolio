@@ -60,3 +60,26 @@ test("omits the standalone portfolio statistics section", () => {
   assert.doesNotMatch(homePage, /Completed Projects/);
   assert.doesNotMatch(homePage, /Side Projects/);
 });
+
+test("places professional experience between the hero and selected work", () => {
+  const heroIndex = homePage.indexOf('id="hero-heading"');
+  const experienceIndex = homePage.indexOf('id="experience"');
+  const workIndex = homePage.indexOf('id="work"');
+
+  assert.ok(heroIndex >= 0, "expected the hero heading to be rendered");
+  assert.ok(experienceIndex > heroIndex, "expected experience after the hero");
+  assert.ok(workIndex > experienceIndex, "expected work after experience");
+});
+
+test("shows role progression and concrete contributions without product names", () => {
+  assert.match(homePage, />Mobile Developer</);
+  assert.match(homePage, />Junior Mobile Developer</);
+  assert.match(homePage, />Software Engineer Intern</);
+  assert.match(homePage, /January 2026(?:<!-- -->)?–(?:<!-- -->)?Present/);
+  assert.match(homePage, /September 2024(?:<!-- -->)?–(?:<!-- -->)?December 2025/);
+  assert.match(homePage, /mobile commerce and field-utility app/);
+  assert.match(homePage, /executing automated drone missions/);
+  assert.match(homePage, /fuel-retail point-of-sale application/);
+  assert.match(homePage, /legacy native stock-management application to Flutter/);
+  assert.doesNotMatch(homePage, /MIST FA|Ronpos/);
+});
