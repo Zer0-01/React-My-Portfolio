@@ -83,3 +83,37 @@ test("shows role progression and concrete contributions without product names", 
   assert.match(homePage, /legacy native stock-management application to Flutter/);
   assert.doesNotMatch(homePage, /MIST FA|Ronpos/);
 });
+
+test("places the tech stack between experience and selected work", () => {
+  const experienceIndex = homePage.indexOf('id="experience"');
+  const techStackIndex = homePage.indexOf('id="tech-stack"');
+  const workIndex = homePage.indexOf('id="work"');
+
+  assert.ok(experienceIndex >= 0, "expected experience to be rendered");
+  assert.ok(techStackIndex > experienceIndex, "expected tech stack after experience");
+  assert.ok(workIndex > techStackIndex, "expected work after tech stack");
+});
+
+test("presents the stack as product-building capabilities without a duplicate skills tab", () => {
+  assert.match(homePage, />Web experiences</);
+  assert.match(homePage, />React</);
+  assert.match(homePage, />Next\.js</);
+  assert.match(homePage, />Vue</);
+  assert.match(homePage, />Nuxt</);
+
+  assert.match(homePage, />Cross-platform and native apps</);
+  assert.match(homePage, />Flutter</);
+  assert.match(homePage, />Kotlin</);
+  assert.match(homePage, />Swift</);
+
+  assert.match(homePage, />Services and data</);
+  assert.match(homePage, />NestJS</);
+  assert.match(homePage, />PostgreSQL</);
+
+  assert.match(homePage, />Delivery and collaboration</);
+  assert.match(homePage, />Docker</);
+  assert.match(homePage, />Git</);
+  assert.match(homePage, />GitHub</);
+
+  assert.doesNotMatch(homePage, />Skills</);
+});

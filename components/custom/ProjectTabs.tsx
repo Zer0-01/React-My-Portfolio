@@ -1,70 +1,43 @@
 "use client";
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { projects } from "@/data/projects";
+import { motion, useReducedMotion } from "framer-motion";
+
 import { AppProjectCard } from "@/components/AppProjectCard";
-import { SkillsGrid } from "./SkillsGrid";
-import { motion } from "framer-motion";
+import { projects } from "@/data/projects";
 
 export function ProjectTabs() {
-    return (
-        <section
-            id="work"
-            className="relative z-10 mx-auto mb-20 mt-12 w-full max-w-5xl scroll-mt-8 px-4"
-        >
-            <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            >
-                <Tabs defaultValue="portfolio" className="w-full">
-                    <div className="flex justify-center mb-12">
-                        <TabsList className="flex h-auto w-full max-w-md bg-card border border-border rounded-lg p-1 shadow-sm">
-                            <TabsTrigger
-                                value="portfolio"
-                                className="flex-1 rounded-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg text-muted-foreground uppercase tracking-[0.2em] font-bold text-[10px] md:text-xs py-2.5 transition-colors duration-200 hover:text-foreground"
-                            >
-                                Portfolio
-                            </TabsTrigger>
-                            <TabsTrigger
-                                value="skills"
-                                className="flex-1 rounded-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg text-muted-foreground uppercase tracking-[0.2em] font-bold text-[10px] md:text-xs py-2.5 transition-colors duration-200 hover:text-foreground"
-                            >
-                                Skills
-                            </TabsTrigger>
-                        </TabsList>
-                    </div>
+  const prefersReducedMotion = useReducedMotion();
 
-                    <TabsContent
-                        value="portfolio"
-                        className="py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
-                    >
-                        {projects.map((project, idx) => (
-                            <motion.div
-                                key={project.slug}
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: idx * 0.1, ease: "easeOut" }}
-                            >
-                                <AppProjectCard {...project} />
-                            </motion.div>
-                        ))}
-                    </TabsContent>
+  return (
+    <section
+      id="work"
+      aria-labelledby="work-heading"
+      className="relative z-10 mb-20 mt-12 w-full max-w-5xl scroll-mt-8"
+    >
+      <div className="max-w-2xl">
+        <p className="font-mono text-label text-primary">Selected work</p>
+        <h2 id="work-heading" className="mt-3 text-heading text-foreground">
+          Products built around real needs.
+        </h2>
+      </div>
 
-                    <TabsContent value="skills" className="py-10">
-                        <motion.div
-                            initial={{ opacity: 0, filter: "blur(10px)" }}
-                            whileInView={{ opacity: 1, filter: "blur(0px)" }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8, ease: "easeOut" }}
-                        >
-                            <SkillsGrid />
-                        </motion.div>
-                    </TabsContent>
-                </Tabs>
-            </motion.div>
-        </section>
-    );
+      <div className="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2 md:mt-14 lg:grid-cols-3">
+        {projects.map((project, index) => (
+          <motion.div
+            key={project.slug}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{
+              duration: prefersReducedMotion ? 0 : 0.5,
+              delay: prefersReducedMotion ? 0 : index * 0.08,
+              ease: [0.16, 1, 0.3, 1],
+            }}
+          >
+            <AppProjectCard {...project} />
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
 }
