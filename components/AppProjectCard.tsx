@@ -28,7 +28,7 @@ export function AppProjectCard({
 }: AppProjectCardProps) {
     return (
         <Link href={`/projects/${slug}`} className="block">
-            <Card className="hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 cursor-pointer rounded-xl border border-white/5 hover:border-primary/50 bg-card/50 backdrop-blur-sm">
+            <Card className="cursor-pointer rounded-lg border border-border bg-card transition-[border-color,box-shadow,transform] duration-200 hover:-translate-y-1 hover:border-primary/50 hover:shadow-md">
                 <CardHeader className="space-y-2">
                     <CardTitle className="text-lg md:text-xl font-bold tracking-tight">{title}</CardTitle>
                     <CardDescription className="text-muted-foreground line-clamp-3 leading-relaxed">{description}</CardDescription>

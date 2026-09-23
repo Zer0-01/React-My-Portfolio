@@ -10,14 +10,13 @@ export function CTAButtons() {
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="flex-1">
                 <Button
                     asChild
-                    className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-sm py-6 transition-all duration-300 shadow-[0_0_20px_-5px_rgba(139,0,0,0.6)] hover:shadow-[0_0_30px_-5px_rgba(139,0,0,0.8)] border border-primary/50 relative overflow-hidden group uppercase tracking-wider"
+                    className="w-full border border-primary/50 bg-primary py-6 font-semibold text-primary-foreground shadow-sm transition-colors duration-200 hover:bg-primary/90"
                 >
                     <a
                         href="https://docs.google.com/document/d/1Ft2fg1_lMUqF9WITtQ9AK5HUFbL3ZzJd/edit?usp=drive_link&ouid=113577497045470240069&rtpof=true&sd=true"
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out" />
                         CV
                     </a>
                 </Button>
@@ -28,7 +27,7 @@ export function CTAButtons() {
                 <Button
                     asChild
                     variant="outline"
-                    className="w-full border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10 hover:text-secondary-foreground font-semibold rounded-sm py-6 transition-all duration-300 uppercase tracking-wider bg-black/40 backdrop-blur-md"
+                    className="w-full border-border bg-card py-6 font-semibold text-foreground transition-colors duration-200 hover:bg-accent hover:text-accent-foreground"
                 >
                     <a
                         href="https://wa.me/601154066082"

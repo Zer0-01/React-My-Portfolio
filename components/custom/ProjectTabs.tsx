@@ -17,16 +17,16 @@ export function ProjectTabs() {
             >
                 <Tabs defaultValue="portfolio" className="w-full">
                     <div className="flex justify-center mb-12">
-                        <TabsList className="flex h-auto w-full max-w-md bg-black/40 backdrop-blur-xl border border-white/5 rounded-full p-1 shadow-2xl">
+                        <TabsList className="flex h-auto w-full max-w-md bg-card border border-border rounded-lg p-1 shadow-sm">
                             <TabsTrigger
                                 value="portfolio"
-                                className="flex-1 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg text-muted-foreground uppercase tracking-[0.2em] font-bold text-[10px] md:text-xs py-2.5 transition-all duration-300 hover:text-foreground"
+                                className="flex-1 rounded-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg text-muted-foreground uppercase tracking-[0.2em] font-bold text-[10px] md:text-xs py-2.5 transition-colors duration-200 hover:text-foreground"
                             >
                                 Portfolio
                             </TabsTrigger>
                             <TabsTrigger
                                 value="skills"
-                                className="flex-1 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg text-muted-foreground uppercase tracking-[0.2em] font-bold text-[10px] md:text-xs py-2.5 transition-all duration-300 hover:text-foreground"
+                                className="flex-1 rounded-md data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-lg text-muted-foreground uppercase tracking-[0.2em] font-bold text-[10px] md:text-xs py-2.5 transition-colors duration-200 hover:text-foreground"
                             >
                                 Skills
                             </TabsTrigger>

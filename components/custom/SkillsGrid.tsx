@@ -6,13 +6,13 @@ export function SkillsGrid() {
             {skills.map((tech) => (
                 <div
                     key={tech.label}
-                    className="flex flex-col items-center p-3 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-300 group cursor-default"
+                    className="flex flex-col items-center p-3 rounded-xl hover:bg-accent border border-transparent hover:border-border transition-colors duration-200 group cursor-default"
                 >
-                    <div className="relative group-hover:scale-110 transition-transform duration-300">
+                    <div className="relative group-hover:scale-110 transition-transform duration-200">
                         <img
                             src={tech.src}
                             alt={tech.label}
-                            className="w-10 h-10 md:w-12 md:h-12 object-contain filter drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]"
+                            className="w-10 h-10 md:w-12 md:h-12 object-contain"
                         />
                     </div>
                     <span className="mt-3 text-[10px] md:text-xs font-medium uppercase tracking-wider text-muted-foreground group-hover:text-foreground transition-colors">

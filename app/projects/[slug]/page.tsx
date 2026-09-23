@@ -21,10 +21,6 @@ export default function ProjectDetailPage({ params }: Props) {
 
     return (
         <main className="relative min-h-screen overflow-hidden">
-            {/* Background Glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-primary/10 rounded-full blur-[120px] -z-10 pointer-events-none opacity-50" />
-            <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10 pointer-events-none opacity-30" />
-
             <div className="container mx-auto px-6 py-12 md:py-20 space-y-16 max-w-6xl">
 
                 {/* BACK BUTTON */}
@@ -106,7 +102,7 @@ export default function ProjectDetailPage({ params }: Props) {
                         initial={{ opacity: 0, scale: 0.98 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.8, delay: 0.3 }}
-                        className="relative w-full aspect-video rounded-2xl overflow-hidden border border-primary/20 shadow-[0_0_50px_-12px_rgba(139,0,0,0.15)] bg-card"
+                        className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-card shadow-md"
                     >
                         <Image
                             src={project.heroImage}
@@ -130,7 +126,7 @@ export default function ProjectDetailPage({ params }: Props) {
                                     {project.images.map((img, idx) => (
                                         <div
                                             key={idx}
-                                            className="relative min-w-[85%] snap-center aspect-video rounded-xl overflow-hidden border border-white/10 bg-card shadow-sm"
+                                            className="relative min-w-[85%] snap-center aspect-video rounded-lg overflow-hidden border border-border bg-card shadow-sm"
                                         >
                                             <Image
                                                 src={img}
@@ -149,7 +145,7 @@ export default function ProjectDetailPage({ params }: Props) {
                                             key={idx}
                                             whileHover={{ scale: 1.02 }}
                                             transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                            className="relative w-full aspect-video rounded-xl overflow-hidden border border-white/10 bg-card shadow-sm group"
+                                            className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-card shadow-sm group"
                                         >
                                             <Image
                                                 src={img}
@@ -167,7 +163,7 @@ export default function ProjectDetailPage({ params }: Props) {
                         {project.video && (
                             <section className="space-y-6">
                                 <h2 className="text-2xl font-bold text-foreground">Demo Video</h2>
-                                <div className="relative w-full rounded-2xl overflow-hidden border border-primary/20 shadow-2xl bg-black aspect-video">
+                                <div className="relative w-full rounded-lg overflow-hidden border border-border bg-background shadow-md aspect-video">
                                     <video
                                         src={project.video}
                                         controls
@@ -218,7 +214,7 @@ export default function ProjectDetailPage({ params }: Props) {
                     {/* Sidebar / Info Panel */}
                     <aside className="lg:col-span-4 space-y-12">
                         {/* TECHNOLOGIES */}
-                        <section className="space-y-6 p-6 rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm">
+                        <section className="space-y-6 rounded-lg border border-border bg-card p-6">
                             <h2 className="font-bold text-foreground uppercase tracking-widest text-sm">Technologies</h2>
                             <ul className="flex flex-wrap gap-2">
                                 {project.technologies.map((tech) => (
@@ -235,14 +231,14 @@ export default function ProjectDetailPage({ params }: Props) {
                         {/* LINKS */}
                         <section className="space-y-4">
                             {project.link && (
-                                <Button asChild className="w-full h-12 text-base font-bold shadow-[0_0_20px_-5px_rgba(139,0,0,0.4)]">
+                                <Button asChild className="w-full h-12 text-base font-bold shadow-sm">
                                     <a href={project.link} target="_blank" rel="noopener noreferrer">
                                         Live Preview <ExternalLink className="ml-2 h-4 w-4" />
                                     </a>
                                 </Button>
                             )}
                             {project.github && (
-                                <Button asChild variant="outline" className="w-full h-12 text-base font-bold border-white/10 hover:bg-white/5">
+                                <Button asChild variant="outline" className="w-full h-12 border-border text-base font-bold hover:bg-accent">
                                     <a href={project.github} target="_blank" rel="noopener noreferrer">
                                         Check Repository <Github className="ml-2 h-4 w-4" />
                                     </a>
@@ -250,7 +246,7 @@ export default function ProjectDetailPage({ params }: Props) {
                             )}
 
                             {/* Store Badges */}
-                            <div className="flex flex-col gap-4 mt-6 pt-6 border-t border-white/5">
+                            <div className="flex flex-col gap-4 mt-6 pt-6 border-t border-border">
                                 {project.storeUrl?.ios && (
                                     <a href={project.storeUrl.ios} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
                                         <Image
