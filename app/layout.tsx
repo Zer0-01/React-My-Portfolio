@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
 import { Providers } from "@/app/providers";
+import { ThemeToggle } from "@/components/custom/ThemeToggle";
 
 import "./globals.css";
 
@@ -30,7 +31,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetBrainsMono.variable} min-h-screen bg-background text-foreground antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <ThemeToggle />
+          {children}
+        </Providers>
       </body>
     </html>
   );
