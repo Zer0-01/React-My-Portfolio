@@ -54,3 +54,9 @@ test("keeps professional profile links available without competing with the main
   assert.match(homePage, /href="https:\/\/github\.com\/Zer0-01"/);
   assert.match(homePage, />View CV</);
 });
+
+test("omits the standalone portfolio statistics section", () => {
+  assert.doesNotMatch(homePage, /Years Experience/);
+  assert.doesNotMatch(homePage, /Completed Projects/);
+  assert.doesNotMatch(homePage, /Side Projects/);
+});
