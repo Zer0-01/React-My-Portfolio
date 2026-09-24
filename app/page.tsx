@@ -1,6 +1,6 @@
 import { Experience } from "@/components/custom/Experience";
 import { Hero } from "@/components/custom/Hero";
-import { ProjectTabs } from "@/components/custom/ProjectTabs";
+import { SelectedWork } from "@/components/custom/SelectedWork";
 import { TechStack } from "@/components/custom/TechStack";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
       <Hero />
       <Experience />
       <TechStack />
-      <ProjectTabs />
+      <SelectedWork />
     </main>
   );
 }

@@ -117,3 +117,43 @@ test("presents the stack as product-building capabilities without a duplicate sk
 
   assert.doesNotMatch(homePage, />Skills</);
 });
+
+test("features only the three selected projects", () => {
+  assert.match(homePage, />Aonic Agriculture</);
+  assert.match(homePage, />LQ Studio</);
+  assert.match(homePage, />Wedding RSVP</);
+
+  assert.doesNotMatch(homePage, />Numeru</);
+  assert.doesNotMatch(homePage, />Vortex Academia/);
+  assert.doesNotMatch(homePage, />ISeBa</);
+  assert.doesNotMatch(homePage, />Muzika Kata</);
+});
+
+test("presents project outcomes and restrained technology context", () => {
+  assert.match(homePage, /including in remote areas/);
+  assert.match(homePage, /replaced manual WhatsApp coordination/i);
+  assert.match(homePage, /replaced printed invitations/i);
+
+  assert.match(homePage, />Flutter</);
+  assert.match(homePage, />Go</);
+  assert.match(homePage, />PostgreSQL</);
+  assert.match(homePage, />Firebase</);
+});
+
+test("uses product imagery without exposing an unfinished case-study action", () => {
+  assert.match(homePage, /alt="Aonic Agriculture product screen/);
+  assert.match(homePage, /alt="LQ Studio booking screen/);
+  assert.match(homePage, /alt="Wedding RSVP screen/);
+  assert.doesNotMatch(homePage, /View case study/i);
+});
+
+test("identifies web project screenshots as desktop product screens", () => {
+  assert.match(homePage, /aria-label="LQ Studio desktop screen 1"/);
+  assert.match(homePage, /aria-label="Wedding RSVP desktop screen 1"/);
+});
+
+test("keeps the theme toggle accessible without rendering a tooltip", () => {
+  assert.match(homePage, /aria-label="Toggle color theme"/);
+  assert.doesNotMatch(homePage, /role="tooltip"/);
+  assert.doesNotMatch(homePage, /theme-toggle-tooltip/);
+});

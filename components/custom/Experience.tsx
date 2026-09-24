@@ -55,19 +55,28 @@ export function Experience() {
 
             <div>
               <ol>
-                {entry.roles.map((role) => (
+                {entry.roles.map((role, roleIndex) => (
                   <li
                     key={`${role.title}-${role.period}`}
-                    className="relative border-l border-border pb-6 pl-6 last:border-transparent last:pb-0"
+                    className="grid grid-cols-[0.75rem_minmax(0,1fr)] gap-4 pb-6 last:pb-0"
                   >
-                    <span
-                      aria-hidden="true"
-                      className="absolute -left-1.5 mt-1.5 size-3 rounded-full border-2 border-background bg-primary"
-                    />
-                    <p className="font-semibold text-foreground">{role.title}</p>
-                    <p className="mt-1 font-mono text-label text-secondary-foreground">
-                      {role.period}
-                    </p>
+                    <div aria-hidden="true" className="relative">
+                      {roleIndex < entry.roles.length - 1 && (
+                        <span className="absolute -bottom-9 left-1/2 top-3 w-px -translate-x-1/2 bg-border" />
+                      )}
+                      <div className="absolute inset-x-0 top-0 z-10 flex h-6 items-center justify-center">
+                        <span className="size-3 rounded-full border-2 border-background bg-primary" />
+                      </div>
+                    </div>
+
+                    <div>
+                      <p className="font-semibold leading-6 text-foreground">
+                        {role.title}
+                      </p>
+                      <p className="mt-1 font-mono text-label text-secondary-foreground">
+                        {role.period}
+                      </p>
+                    </div>
                   </li>
                 ))}
               </ol>
