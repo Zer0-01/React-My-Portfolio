@@ -6,6 +6,9 @@ const port = 3107;
 const baseUrl = `http://127.0.0.1:${port}`;
 let devServer: ChildProcess;
 let homePage = "";
+let projectPage = "";
+let robots = "";
+let sitemap = "";
 
 before(async () => {
   devServer = spawn(
@@ -20,6 +23,21 @@ before(async () => {
 
       if (response.ok) {
         homePage = await response.text();
+        const [projectResponse, robotsResponse, sitemapResponse] = await Promise.all([
+          fetch(`${baseUrl}/projects/numeru`),
+          fetch(`${baseUrl}/robots.txt`),
+          fetch(`${baseUrl}/sitemap.xml`),
+        ]);
+
+        assert.equal(projectResponse.status, 200);
+        assert.equal(robotsResponse.status, 200);
+        assert.equal(sitemapResponse.status, 200);
+
+        [projectPage, robots, sitemap] = await Promise.all([
+          projectResponse.text(),
+          robotsResponse.text(),
+          sitemapResponse.text(),
+        ]);
         return;
       }
     } catch {
@@ -156,4 +174,66 @@ test("keeps the theme toggle accessible without rendering a tooltip", () => {
   assert.match(homePage, /aria-label="Toggle color theme"/);
   assert.doesNotMatch(homePage, /role="tooltip"/);
   assert.doesNotMatch(homePage, /theme-toggle-tooltip/);
+});
+
+test("publishes descriptive canonical and social metadata for the portfolio", () => {
+  assert.match(
+    homePage,
+    /<title>Anas Zulkifli \| Product-focused Developer<\/title>/,
+  );
+  assert.match(
+    homePage,
+    /<meta name="description" content="Anas Zulkifli is a product-focused developer building reliable web and mobile experiences from idea to launch\."/,
+  );
+  assert.match(homePage, /<link rel="canonical" href="https:\/\/anaszulkifli\.dev"/);
+  assert.match(homePage, /<meta property="og:type" content="website"/);
+  assert.match(homePage, /<meta property="og:url" content="https:\/\/anaszulkifli\.dev"/);
+  assert.match(homePage, /<meta name="twitter:card" content="summary_large_image"/);
+});
+
+test("describes the portfolio owner with crawlable structured data", () => {
+  assert.match(homePage, /<script type="application\/ld\+json">/);
+  assert.match(homePage, /"@type":"Person"/);
+  assert.match(homePage, /"name":"Anas Zulkifli"/);
+  assert.match(homePage, /"url":"https:\/\/anaszulkifli\.dev"/);
+  assert.match(homePage, /"jobTitle":"Product-focused Developer"/);
+});
+
+test("publishes project-specific metadata instead of inheriting the homepage title", () => {
+  assert.match(projectPage, /<title>Numeru \| Anas Zulkifli<\/title>/);
+  assert.match(
+    projectPage,
+    /<meta name="description" content="A multi-purpose calculator app with features for everyday calculations and financial planning\."/,
+  );
+  assert.match(
+    projectPage,
+    /<link rel="canonical" href="https:\/\/anaszulkifli\.dev\/projects\/numeru"/,
+  );
+  assert.match(
+    projectPage,
+    /<meta property="og:url" content="https:\/\/anaszulkifli\.dev\/projects\/numeru"/,
+  );
+});
+
+test("allows search engines to crawl pages and rendering assets", () => {
+  assert.match(robots, /User-Agent: \*/i);
+  assert.match(robots, /Allow: \//i);
+  assert.doesNotMatch(robots, /Disallow:/i);
+  assert.match(robots, /Sitemap: https:\/\/anaszulkifli\.dev\/sitemap\.xml/i);
+});
+
+test("lists the canonical homepage and every published project in the sitemap", () => {
+  const expectedUrls = [
+    "https://anaszulkifli.dev",
+    "https://anaszulkifli.dev/projects/aonic-agriculture",
+    "https://anaszulkifli.dev/projects/numeru",
+    "https://anaszulkifli.dev/projects/e-wedding",
+    "https://anaszulkifli.dev/projects/vortex-academia",
+    "https://anaszulkifli.dev/projects/iseba",
+    "https://anaszulkifli.dev/projects/muzika-kata",
+  ];
+
+  for (const url of expectedUrls) {
+    assert.match(sitemap, new RegExp(`<loc>${url}</loc>`));
+  }
 });
