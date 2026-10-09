@@ -31,8 +31,8 @@ export function Hero() {
           <motion.div
             initial={prefersReducedMotion ? false : { opacity: 0, scale: 0.92 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="relative size-16 shrink-0 overflow-hidden rounded-full border border-border bg-card md:size-20"
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="relative size-16 shrink-0 overflow-hidden rounded-full bg-card md:size-20"
           >
             <Image
               src="/profile-picture.jpeg"
@@ -46,7 +46,7 @@ export function Hero() {
 
           <div>
             <p className="font-semibold text-foreground">Anas Zulkifli</p>
-            <p className="mt-1 font-mono text-label text-secondary-foreground">
+            <p className="mt-1 text-sm text-secondary-foreground">
               Product-focused developer
             </p>
           </div>
@@ -59,13 +59,13 @@ export function Hero() {
           I build digital products from idea to launch.
         </h1>
 
-        <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+        <p className="mt-6 max-w-2xl text-body-lg text-secondary-foreground">
           I turn real problems into clear, reliable digital experiences—taking
           ownership from early thinking through development and release.
         </p>
 
         <div className="mt-8 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-          <Button asChild className="h-12 px-6 text-base font-semibold">
+          <Button asChild className="h-12 bg-primary-action px-6 text-base font-medium text-primary-foreground shadow-none hover:bg-primary-active">
             <a
               href="https://wa.me/601154066082"
               target="_blank"
@@ -78,8 +78,8 @@ export function Hero() {
 
           <Button
             asChild
-            variant="outline"
-            className="h-12 border-border bg-transparent px-6 text-base font-semibold"
+            variant="secondary"
+            className="h-12 bg-card px-6 text-base font-medium text-foreground shadow-none hover:bg-accent"
           >
             <a href="#work">
               View my work
@@ -98,7 +98,7 @@ export function Hero() {
               href={link.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-sm font-mono text-label text-secondary-foreground underline-offset-4 transition-colors duration-200 hover:text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
+              className="rounded-sm text-sm text-secondary-foreground underline-offset-4 transition-colors duration-200 hover:text-link hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
             >
               {link.label}
             </a>

@@ -47,7 +47,7 @@ export const featuredProjects: FeaturedProject[] = [
     ],
   },
   {
-    slug: "wedding-rsvp",
+    slug: "e-wedding",
     title: "Wedding RSVP",
     meta: "Personal product · Web · 2025",
     statement: "One place for guests to find every wedding detail.",

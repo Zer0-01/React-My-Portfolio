@@ -23,9 +23,9 @@ export function ThemeToggle() {
     <div className="fixed right-6 top-6 z-50 md:right-8 md:top-8">
       <Button
         type="button"
-        variant="outline"
+        variant="secondary"
         size="icon"
-        className="size-11 rounded-md border-border bg-card text-foreground shadow-sm hover:bg-accent hover:text-accent-foreground"
+        className="size-11 rounded-md bg-card text-foreground shadow-none hover:bg-accent hover:text-accent-foreground"
         aria-label={label}
         disabled={!mounted}
         onClick={() => setTheme(isDark ? "light" : "dark")}

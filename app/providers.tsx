@@ -13,7 +13,6 @@ export function Providers({ children }: ProvidersProps) {
       attribute="class"
       defaultTheme="dark"
       enableSystem={false}
-      disableTransitionOnChange
     >
       <MotionConfig reducedMotion="user">{children}</MotionConfig>
     </ThemeProvider>

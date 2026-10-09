@@ -228,11 +228,31 @@ With Aonic Agriculture, you can:
         ],
         github: "https://github.com/Zer0-01/next-musika-kata",
         link: "https://muzika-kata.netlify.app/"
+    },
+    {
+        slug: "lq-studio",
+        title: "LQ Studio",
+        summary: "A smoother way to book a photography session.",
+        description: "As a Lakarsoft co-founder and developer, I helped create customer and admin experiences for managing photography packages, themes, add-ons, availability, bookings, customer details, tracking, and email notifications.",
+        role: "Co-founder and Developer",
+        organization: "Lakarsoft",
+        projectType: "web",
+        features: [
+            "Guided photography booking",
+            "Package, theme, and add-on selection",
+            "Availability management",
+            "Booking tracking and email notifications"
+        ],
+        outcomes: [
+            "Replaced manual WhatsApp booking coordination with a guided booking process",
+            "Reduced scheduling work, booking conflicts, repeated communication, and human error"
+        ],
+        technologies: ["Next.js", "Go", "PostgreSQL"],
+        images: [
+            "/projects/lqstudio/Screenshot 2026-09-24 at 2.01.46 AM.png",
+            "/projects/lqstudio/Screenshot 2026-09-24 at 2.03.48 AM.png",
+            "/projects/lqstudio/Screenshot 2026-09-24 at 2.04.23 AM.png"
+        ]
     }
-
-
-
-
-
 ];
 

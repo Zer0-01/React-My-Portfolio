@@ -1,280 +1,130 @@
-"use client";
-
-import { use } from "react";
-import { notFound } from "next/navigation";
-import { projects } from "@/data/projects";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, ArrowUpRight, Github } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { ChevronLeft, ExternalLink, Github } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { projects } from "@/data/projects";
 
 interface Props {
-    params: Promise<{ slug: string }>;
+  params: Promise<{ slug: string }>;
 }
 
-export default function ProjectDetailPage({ params }: Props) {
-    const { slug } = use(params);
-    const project = projects.find((p) => p.slug === slug);
-    if (!project) return notFound();
+export default async function ProjectDetailPage({ params }: Props) {
+  const { slug } = await params;
+  const project = projects.find((item) => item.slug === slug);
+  if (!project) notFound();
 
-    return (
-        <main className="relative min-h-screen overflow-hidden">
-            <div className="container mx-auto px-6 py-12 md:py-20 space-y-16 max-w-6xl">
+  const introduction = project.summary.split("\n")[0].trim();
+  const heroImage = project.heroImage ?? project.images?.[0];
+  const gallery = project.images?.filter((image) => image !== heroImage) ?? [];
+  const attribution = project.company ?? project.organization ?? project.client;
 
-                {/* BACK BUTTON */}
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                >
-                    <Button
-                        asChild
-                        variant="ghost"
-                        size="sm"
-                        className="group text-muted-foreground hover:text-foreground -ml-2"
-                    >
-                        <Link href="/">
-                            <ChevronLeft className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-1" />
-                            Back to Home
-                        </Link>
-                    </Button>
-                </motion.div>
+  return (
+    <main className="mx-auto w-full max-w-6xl px-5 pb-20 pt-24 sm:px-8 md:pt-28">
+      <Link href="/#work" className="group inline-flex min-h-11 items-center gap-2 rounded-md text-sm font-medium text-link underline-offset-4 transition-colors duration-fast hover:underline">
+        <ArrowLeft aria-hidden="true" className="size-4 transition-transform duration-fast group-hover:-translate-x-1" />
+        Back to work
+      </Link>
 
-                {/* HEADER */}
-                <header className="space-y-6 max-w-4xl">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.1 }}
-                        className="space-y-4"
-                    >
-                        <p className="text-sm font-medium text-primary tracking-[0.2em] uppercase">
-                            {project.year}
-                        </p>
+      <header className="mt-10 max-w-4xl md:mt-14">
+        <p className="text-sm font-medium text-link">{[project.projectType, project.year].filter(Boolean).join(" · ")}</p>
+        <h1 className="mt-4 text-display">{project.title}</h1>
+        <p className="mt-6 max-w-3xl text-body-lg text-secondary-foreground">{introduction}</p>
+        {(project.role || attribution) && (
+          <p className="mt-6 text-sm text-muted-foreground">
+            {[project.role, attribution].filter(Boolean).join(" · ")}
+          </p>
+        )}
+      </header>
 
-                        <h1 className="text-4xl md:text-6xl font-black tracking-tight text-foreground leading-[1.1]">
-                            {project.title}
-                        </h1>
+      {heroImage && (
+        <div className="relative mt-10 aspect-video w-full overflow-hidden rounded-xl bg-card md:mt-14">
+          <Image src={heroImage} alt={`${project.title} product screen`} fill priority sizes="(min-width: 1152px) 1152px, 100vw" className="object-contain p-4 sm:p-8" />
+        </div>
+      )}
 
-                        <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground font-medium">
-                            {project.role && (
-                                <span className="flex items-center gap-1.5">
-                                    <span className="w-1 h-1 rounded-full bg-primary/50" />
-                                    {project.role}
-                                </span>
-                            )}
-                            {project.organization && <span>@ {project.organization}</span>}
-                            {project.company && <span>@ {project.company}</span>}
-                            {project.client && <span>Client: {project.client}</span>}
-                            {project.projectType && (
-                                <span className="px-2 py-0.5 rounded bg-muted text-[10px] uppercase tracking-wider">
-                                    {project.projectType}
-                                </span>
-                            )}
-                        </div>
-                    </motion.div>
+      <div className="mt-12 grid gap-10 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16 md:mt-16">
+        <div className="space-y-12 md:space-y-16">
+          {project.description && (
+            <section aria-labelledby="overview-heading" className="rounded-lg bg-card p-6 sm:p-8">
+              <h2 id="overview-heading" className="text-heading-md">Overview</h2>
+              <p className="mt-5 text-secondary-foreground">{project.description}</p>
+            </section>
+          )}
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: 0.2 }}
-                        className="space-y-6 max-w-3xl"
-                    >
-                        {project.summary && (
-                            <p className="text-muted-foreground text-lg md:text-xl leading-relaxed font-medium">
-                                {project.summary}
-                            </p>
-                        )}
+          {project.features && project.features.length > 0 && (
+            <section aria-labelledby="features-heading">
+              <h2 id="features-heading" className="text-heading-md">What it does</h2>
+              <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+                {project.features.map((feature) => (
+                  <li key={feature} className="rounded-md bg-card p-5 text-secondary-foreground">{feature}</li>
+                ))}
+              </ul>
+            </section>
+          )}
 
-                        {project.description && (
-                            <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                                {project.description}
-                            </p>
-                        )}
-                    </motion.div>
-                </header>
+          {project.outcomes && project.outcomes.length > 0 && (
+            <section aria-labelledby="outcomes-heading">
+              <h2 id="outcomes-heading" className="text-heading-md">Outcomes</h2>
+              <ul className="mt-6 space-y-3">
+                {project.outcomes.map((outcome) => (
+                  <li key={outcome} className="flex gap-3 rounded-md bg-card p-5 text-secondary-foreground">
+                    <span aria-hidden="true" className="mt-2 size-2 shrink-0 rounded-full bg-primary" />
+                    <span>{outcome}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
 
-                {/* HERO IMAGE */}
-                {project.heroImage && (
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                        className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-card shadow-md"
-                    >
-                        <Image
-                            src={project.heroImage}
-                            alt={project.title}
-                            fill
-                            className="object-contain p-4 md:p-8"
-                        />
-                    </motion.div>
-                )}
+          {gallery.length > 0 && (
+            <section aria-labelledby="gallery-heading">
+              <h2 id="gallery-heading" className="text-heading-md">Gallery</h2>
+              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                {gallery.map((image, index) => (
+                  <div key={image} className="relative aspect-video overflow-hidden rounded-lg bg-card">
+                    <Image src={image} alt={`${project.title} screen ${index + 2}`} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-contain p-3 sm:p-5" />
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
-                {/* CONTENT GRID */}
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-                    {/* Main Content Area */}
-                    <div className="lg:col-span-8 space-y-16">
-                        {/* IMAGES */}
-                        {project.images?.length && (
-                            <section className="space-y-8">
-                                <h2 className="text-2xl font-bold text-foreground">Project Gallery</h2>
-                                {/* Mobile carousel */}
-                                <div className="md:hidden flex gap-4 overflow-x-auto snap-x scroll-smooth pb-4 no-scrollbar">
-                                    {project.images.map((img, idx) => (
-                                        <div
-                                            key={idx}
-                                            className="relative min-w-[85%] snap-center aspect-video rounded-lg overflow-hidden border border-border bg-card shadow-sm"
-                                        >
-                                            <Image
-                                                src={img}
-                                                alt={`${project.title}-${idx}`}
-                                                fill
-                                                className="object-contain p-2"
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
+          {project.video && (
+            <section aria-labelledby="video-heading">
+              <h2 id="video-heading" className="text-heading-md">Demo video</h2>
+              <video src={project.video} controls preload="metadata" aria-label={`${project.title} demo video`} className="mt-6 aspect-video w-full rounded-lg bg-card" />
+            </section>
+          )}
+        </div>
 
-                                {/* Desktop grid */}
-                                <div className="hidden md:grid grid-cols-2 gap-6">
-                                    {project.images.map((img, idx) => (
-                                        <motion.div
-                                            key={idx}
-                                            whileHover={{ scale: 1.02 }}
-                                            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                            className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-card shadow-sm group"
-                                        >
-                                            <Image
-                                                src={img}
-                                                alt={`${project.title}-${idx}`}
-                                                fill
-                                                className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
-                                            />
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </section>
-                        )}
+        <aside aria-label="Project details" className="self-start rounded-lg bg-card p-6 sm:p-8">
+          <h2 className="text-xl">Technologies</h2>
+          <ul className="mt-5 flex flex-wrap gap-2">
+            {project.technologies.map((technology) => (
+              <li key={technology} className="rounded-sm bg-secondary px-3 py-1.5 text-sm text-secondary-foreground">{technology}</li>
+            ))}
+          </ul>
 
-                        {/* VIDEO */}
-                        {project.video && (
-                            <section className="space-y-6">
-                                <h2 className="text-2xl font-bold text-foreground">Demo Video</h2>
-                                <div className="relative w-full rounded-lg overflow-hidden border border-border bg-background shadow-md aspect-video">
-                                    <video
-                                        src={project.video}
-                                        controls
-                                        className="w-full h-full object-contain"
-                                    />
-                                </div>
-                            </section>
-                        )}
-
-                        {/* FEATURES & OUTCOMES */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                            {project.features && (
-                                <section className="space-y-4">
-                                    <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
-                                        <span className="w-1.5 h-6 bg-primary rounded-full" />
-                                        Core Features
-                                    </h2>
-                                    <ul className="space-y-3">
-                                        {project.features.map((f, i) => (
-                                            <li key={i} className="flex gap-3 text-muted-foreground/90 leading-relaxed">
-                                                <span className="text-primary mt-1">•</span>
-                                                {f}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </section>
-                            )}
-
-                            {project.outcomes && (
-                                <section className="space-y-4">
-                                    <h2 className="text-xl font-bold text-foreground flex items-center gap-2">
-                                        <span className="w-1.5 h-6 bg-primary rounded-full" />
-                                        Outcomes
-                                    </h2>
-                                    <ul className="space-y-3">
-                                        {project.outcomes.map((o, i) => (
-                                            <li key={i} className="flex gap-3 text-muted-foreground/90 leading-relaxed">
-                                                <span className="text-primary mt-1">✓</span>
-                                                {o}
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </section>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Sidebar / Info Panel */}
-                    <aside className="lg:col-span-4 space-y-12">
-                        {/* TECHNOLOGIES */}
-                        <section className="space-y-6 rounded-lg border border-border bg-card p-6">
-                            <h2 className="font-bold text-foreground uppercase tracking-widest text-sm">Technologies</h2>
-                            <ul className="flex flex-wrap gap-2">
-                                {project.technologies.map((tech) => (
-                                    <li
-                                        key={tech}
-                                        className="px-3 py-1.5 text-sm rounded-lg bg-secondary/50 text-secondary-foreground border border-secondary/50 font-medium"
-                                    >
-                                        {tech}
-                                    </li>
-                                ))}
-                            </ul>
-                        </section>
-
-                        {/* LINKS */}
-                        <section className="space-y-4">
-                            {project.link && (
-                                <Button asChild className="w-full h-12 text-base font-bold shadow-sm">
-                                    <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                        Live Preview <ExternalLink className="ml-2 h-4 w-4" />
-                                    </a>
-                                </Button>
-                            )}
-                            {project.github && (
-                                <Button asChild variant="outline" className="w-full h-12 border-border text-base font-bold hover:bg-accent">
-                                    <a href={project.github} target="_blank" rel="noopener noreferrer">
-                                        Check Repository <Github className="ml-2 h-4 w-4" />
-                                    </a>
-                                </Button>
-                            )}
-
-                            {/* Store Badges */}
-                            <div className="flex flex-col gap-4 mt-6 pt-6 border-t border-border">
-                                {project.storeUrl?.ios && (
-                                    <a href={project.storeUrl.ios} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
-                                        <Image
-                                            src="/app-store.svg"
-                                            alt="Download on App Store"
-                                            width={140}
-                                            height={42}
-                                            className="w-full h-auto max-w-[160px] mx-auto md:mx-0"
-                                        />
-                                    </a>
-                                )}
-                                {project.storeUrl?.android && (
-                                    <a href={project.storeUrl.android} target="_blank" rel="noopener noreferrer" className="transition-opacity hover:opacity-80">
-                                        <Image
-                                            src="/play-store.svg"
-                                            alt="Get it on Google Play"
-                                            width={140}
-                                            height={42}
-                                            className="w-full h-auto max-w-[160px] mx-auto md:mx-0"
-                                        />
-                                    </a>
-                                )}
-                            </div>
-                        </section>
-                    </aside>
-                </div>
-
+          {(project.link || project.github || project.storeUrl?.ios || project.storeUrl?.android) && (
+            <div className="mt-8 flex flex-col gap-3">
+              {project.link && (
+                <Button asChild className="h-11 bg-primary-action text-primary-foreground shadow-none hover:bg-primary-active">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">Visit project <ArrowUpRight aria-hidden="true" /></a>
+                </Button>
+              )}
+              {project.github && (
+                <Button asChild variant="secondary" className="h-11 shadow-none hover:bg-accent">
+                  <a href={project.github} target="_blank" rel="noopener noreferrer">View repository <Github aria-hidden="true" /></a>
+                </Button>
+              )}
+              {project.storeUrl?.ios && <a href={project.storeUrl.ios} target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center rounded-md text-sm font-medium text-link underline-offset-4 hover:underline">View on the App Store <ArrowUpRight aria-hidden="true" className="ml-2 size-4" /></a>}
+              {project.storeUrl?.android && <a href={project.storeUrl.android} target="_blank" rel="noopener noreferrer" className="flex min-h-11 items-center rounded-md text-sm font-medium text-link underline-offset-4 hover:underline">View on Google Play <ArrowUpRight aria-hidden="true" className="ml-2 size-4" /></a>}
             </div>
-        </main>
-    );
+          )}
+        </aside>
+      </div>
+    </main>
+  );
 }

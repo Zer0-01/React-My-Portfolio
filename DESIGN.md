@@ -1,117 +1,758 @@
 ---
-name: Maroon Proof
-theme: dark-default-with-light-switcher
+name: Teal Minimal Portfolio
+description: A modern, minimal, borderless portfolio design system with expressive motion, refined surfaces, and balanced light and dark themes.
 colors:
-  primary: "#D48BA0"
-  secondary: "#AFA1A9"
-  background: "#160F14"
-  surface: "#21191F"
-  surface-raised: "#2B2028"
-  on-surface: "#F7F1F4"
-  border: "#483942"
-  error: "#FFB4B4"
-light-colors:
-  primary: "#7B2540"
-  secondary: "#675B61"
-  background: "#FFFCFA"
-  surface: "#F6F0F1"
-  surface-raised: "#FFFFFF"
-  on-surface: "#261C22"
-  border: "#D8C9D0"
-  error: "#A32633"
+  primary: "#0D9488"
+  secondary: "#64748B"
+  surface: "#FFFFFF"
+  background: "#F0F2F2"
+  on-surface: "#171717"
+  error: "#DC2626"
 typography:
-  display:
-    fontFamily: Inter
-    fontSize: "clamp(44px, 7vw, 84px)"
-    fontWeight: 650
   heading:
-    fontFamily: Inter
-    fontSize: "clamp(30px, 4vw, 52px)"
-    fontWeight: 650
+    fontFamily: "JetBrains Mono"
+    fontWeight: 600
   body-md:
-    fontFamily: Inter
+    fontFamily: "Inter"
     fontSize: 16px
     fontWeight: 400
-  label:
-    fontFamily: JetBrains Mono
-    fontSize: 12px
-    fontWeight: 500
 rounded:
   sm: 6px
   md: 10px
   lg: 16px
+  xl: 20px
+motion:
+  style: expressive
+  duration-fast: 150ms
+  duration-normal: 300ms
+  duration-slow: 500ms
+  easing: "cubic-bezier(0.22, 1, 0.36, 1)"
 ---
 
 # Design System
 
-## Overview
+## 1. Overview
 
-Maroon Proof is a polished portfolio for Anas Zulkifli, a product-focused developer who builds complete solutions. It should help a recruiter quickly assess his work and help a potential client trust his ability to design, build, and ship a product. Mobile engineering is a clear strength, but the portfolio should also demonstrate full product delivery.
+A modern, minimal, and refined design system for a personal developer portfolio.
 
-The interface is calm, precise, and human. Real product screens are the main visual attraction. Restrained maroon provides identity and clear interaction cues; typography, spacing, and layout provide the polish. The default theme is dark. A deliberate warm light theme is available through a visible switcher.
+The visual identity combines clean typography, subtle neutral surfaces, a distinctive teal accent, and expressive interactions.
 
-## Colors
+The design should feel professional, polished, modern, and interactive without appearing overly decorative or visually crowded.
 
-| Role | Dark default | Light | Use |
-| --- | --- | --- | --- |
-| Primary | `#D48BA0` | `#7B2540` | Main CTA, links, selected states, focus accents |
-| Secondary | `#AFA1A9` | `#675B61` | Supporting text and quiet metadata |
-| Background | `#160F14` | `#FFFCFA` | Page canvas |
-| Surface | `#21191F` | `#F6F0F1` | Cards, navigation, inputs |
-| Raised surface | `#2B2028` | `#FFFFFF` | Featured panels and open overlays |
-| On-surface | `#F7F1F4` | `#261C22` | Headlines and body text |
-| Border | `#483942` | `#D8C9D0` | Frames, dividers, control outlines |
-| Error | `#FFB4B4` | `#A32633` | Validation feedback |
+### Core Characteristics
 
-- Use the appropriate primary shade for each theme. The dark shade is a soft rose-maroon that stays visible on deep surfaces; the light shade is a deeper maroon that remains readable on warm white.
-- On filled primary buttons, use dark text `#25191E` in dark mode and white text `#FFFFFF` in light mode. Avoid white text on the dark theme's lighter primary fill.
-- Use one primary action per section. Keep most of the viewport neutral so the work and the action remain clear.
-- Check text and control contrast against the actual background beneath them; meet WCAG AA. Do not use color as the sole indication of state.
-- The theme switcher changes all semantic tokens, imagery backplates, borders, and focus states together. Start in dark mode for a new visitor; retain the visitor's selected theme on later visits.
+- Modern and minimal visual language
+- Teal as the primary brand accent
+- Balanced light and dark themes
+- Clearly distinguishable background and foreground surfaces
+- Borderless, shadowless, and gradient-free styling
+- Soft, consistent rounded corners
+- JetBrains Mono headings and Inter body typography
+- Expressive, fluid, purposeful motion
+- Strong visual hierarchy
+- Accessible interaction states
+- Consistent semantic design tokens
 
-## Typography
+The visual system must prioritize clarity, consistency, and a distinctive yet restrained aesthetic.
 
-- **Display and headlines:** Inter, semibold, compact line height (about 1.05), slight negative tracking. Keep the headline short and readable at narrow widths.
-- **Body:** Inter, regular, 16–18px with 1.55–1.7 line height. Limit long case-study paragraphs to roughly 70 characters per line.
-- **Labels and metadata:** JetBrains Mono, medium, 12–14px. Reserve it for dates, roles, platforms, section indices, and technology notes.
-- Use sentence case for headings and interface copy. Uppercase is acceptable for a short metadata label, never for a paragraph.
-- Provide system sans-serif and monospace fallbacks. Do not rely on font loading to preserve the page hierarchy.
+## 2. Design Principles
 
-## Layout and Imagery
+### 2.1 Minimalism
 
-- Use a spacious hero that introduces Anas as a product-focused developer; identify Flutter and mobile work in the supporting copy. Show a primary contact action and a secondary path to selected work.
-- Present two or three featured projects in large sections. Give each a real screenshot, a concise problem statement, Anas's contribution, and a credible result. Follow with a compact grid of additional projects.
-- Use dedicated case-study pages for detail. Each should cover context, role, challenge, important decisions, implementation, outcome, and reflection. Keep the homepage scannable.
-- Use authentic product screenshots in simple, consistent phone and browser frames. Preserve legibility and do not hide key UI under decorative overlays. Use public or approved captures, with private content removed where needed.
-- Keep a content container around 1200px wide; use generous desktop gutters and at least 20px mobile gutters. Stack showcase copy and imagery on mobile and avoid horizontal scrolling.
-- Use spacing in multiples of 8px. Allow whitespace around the work rather than enclosing every section in a card.
+Maintain a clean, uncluttered interface.
 
-## Motion
+- Prefer simplicity over unnecessary decoration.
+- Use color, typography, spacing, and motion to establish hierarchy.
+- Avoid excessive visual elements.
+- Keep decorative treatments purposeful.
+- Maintain sufficient visual breathing room.
+- Avoid unnecessary graphical noise.
 
-- Use balanced motion: 150–250ms transitions for controls, and a small number of 400–600ms reveals around featured project imagery.
-- Let layered screenshots enter in a meaningful order to show the product. Keep headings and actions available without waiting for animation.
-- Avoid scroll hijacking, looping decoration, cursor effects, and parallax behind text.
-- Respect `prefers-reduced-motion`: remove movement and preserve all content and interactions in the same order.
+### 2.2 Borderless Design
 
-## Components
+Use a predominantly borderless visual language.
 
-- **Navigation:** Compact identity mark, Work, About, and Contact links, plus a clearly labeled theme switcher. Keep contact reachable on mobile.
-- **Buttons:** 10px radius, at least 44px high, clear primary and secondary styles. Define hover, pressed, focus-visible, and disabled states. Make keyboard focus visible in both themes.
-- **Featured projects:** Large screenshot or device frame, project name, one-sentence value, role, result, and a clear case-study link. Keep technology tags secondary.
-- **Additional project cards:** Smaller screenshot-led cards with consistent aspect ratios and concise descriptions. The whole card may be one link, without nested competing actions.
-- **Case-study pages:** Comfortable reading width, full-size imagery with captions when useful, direct back navigation, and a clear contact action at the end.
-- **Tags:** Quiet surface and border treatment, short labels, monospace used selectively. Avoid colorful technology badge collections.
-- **Contact:** A direct email action is the simplest default. If a form is added, use visible labels, inline validation, success feedback, and an email alternative.
-- **Theme switcher:** Visible in navigation, keyboard operable, with an accessible name that states the action and an understandable current state. Prevent a flash of the wrong theme during load.
+- Components should not rely on visible borders for separation.
+- Differentiate elements using background and surface colors.
+- Avoid outlining every card or container.
+- Prefer surface contrast and whitespace over dividers.
+- Borders may be introduced only when necessary for clarity or accessibility.
+- Keyboard focus indicators are exempt from the borderless rule.
 
-## Do's and Don'ts
+The interface should feel seamless rather than divided into outlined boxes.
 
-- Do lead with product problems, ownership, and outcomes; place stack details where they support the story.
-- Do use maroon consistently as an interaction signal across both themes.
-- Do let real project screens carry the visual weight and keep their framing consistent.
-- Do show individual contributions accurately and use metrics only when verified.
-- Do check mobile layouts, keyboard navigation, reduced motion, and contrast in both themes.
-- Don't use fake dashboards, generic technology illustrations, or invented results to fill space.
-- Don't cover every section with cards, gradients, shadows, or tinted backgrounds.
-- Don't make project content depend on scrolling effects, hover, or a particular theme.
-- Don't use skill bars, logo clouds, or long lists of frameworks as a substitute for project evidence.
+### 2.3 Flat Design
+
+Use a flat visual appearance throughout.
+
+- No box shadows.
+- No drop shadows.
+- No elevation effects.
+- No gradients.
+- No glassmorphism.
+- No neumorphism.
+- No simulated depth through lighting effects.
+
+Visual hierarchy must come from color contrast, typography, spacing, shape, and motion.
+
+### 2.4 Surface Separation
+
+Background and foreground surfaces must remain visually distinguishable.
+
+- Use deliberate tonal differences between the main background and foreground surfaces.
+- Maintain stronger surface separation than a typical ultra-minimal interface.
+- Avoid surface colors that are almost identical.
+- Do not compensate for insufficient contrast by adding shadows or borders.
+- Preserve a neutral appearance with subtle teal undertones.
+
+### 2.5 Consistency
+
+All components must share a coherent visual language.
+
+- Use centralized design tokens.
+- Apply consistent typography rules.
+- Reuse the established corner-radius scale.
+- Maintain consistent interaction feedback.
+- Follow the same motion language.
+- Respect both light and dark themes.
+
+## 3. Color System
+
+The color system combines a restrained teal brand accent with neutral backgrounds and contrasting foreground surfaces.
+
+The palette is designed to support both light and dark themes while maintaining visible separation between layers without using shadows or borders.
+
+### 3.1 Light Theme
+
+The light theme uses a soft, near-white background with pure white foreground surfaces.
+
+| Token | Hex | Purpose |
+|---|---|---|
+| Primary | `#0D9488` | Main teal accent |
+| Primary Hover | `#0F766E` | Hover state |
+| Primary Active | `#115E59` | Pressed state |
+| Primary Soft | `#CCFBF1` | Subtle teal backgrounds |
+| Background | `#F0F2F2` | Main background |
+| Surface | `#FFFFFF` | Cards and foreground surfaces |
+| Surface Secondary | `#E5E9E9` | Secondary component surfaces |
+| Surface Hover | `#DCE2E2` | Neutral hover state |
+| Text Primary | `#171717` | Main text |
+| Text Secondary | `#525252` | Supporting text |
+| Text Muted | `#737373` | Muted text |
+| Text On Primary | `#FFFFFF` | Text on solid teal |
+| Error | `#DC2626` | Error and destructive states |
+| Success | `#15803D` | Success feedback |
+
+#### Light Theme Rules
+
+- Use `#F0F2F2` as the main background.
+- Use `#FFFFFF` for primary foreground surfaces.
+- Use `#E5E9E9` for secondary surfaces.
+- Maintain clear separation between the background and cards.
+- Keep teal usage purposeful and restrained.
+- Avoid excessive gray-on-gray layering.
+- Maintain a bright, clean, and polished appearance.
+
+### 3.2 Dark Theme
+
+The dark theme uses a near-black background with deeper black foreground surfaces.
+
+| Token | Hex | Purpose |
+|---|---|---|
+| Primary | `#2DD4BF` | Main teal accent |
+| Primary Hover | `#5EEAD4` | Hover state |
+| Primary Active | `#14B8A6` | Pressed state |
+| Primary Soft | `#134E4A` | Subtle teal backgrounds |
+| Background | `#1C1F1F` | Main background |
+| Surface | `#080A0A` | Cards and foreground surfaces |
+| Surface Secondary | `#292D2D` | Secondary component surfaces |
+| Surface Hover | `#353A3A` | Neutral hover state |
+| Text Primary | `#F5F5F5` | Main text |
+| Text Secondary | `#A3A3A3` | Supporting text |
+| Text Muted | `#8A8A8A` | Muted text |
+| Text On Primary | `#042F2E` | Text on bright teal |
+| Error | `#F87171` | Error and destructive states |
+| Success | `#4ADE80` | Success feedback |
+
+#### Dark Theme Rules
+
+- Use `#1C1F1F` as the main background.
+- Use `#080A0A` for primary foreground surfaces.
+- Use `#292D2D` for secondary surfaces.
+- Preserve visible separation between the background and foreground elements.
+- Avoid pure black as the main page background.
+- Use brighter teal accents to maintain visual presence.
+- Keep neutral text readable without appearing overly bright.
+- Avoid blue-tinted dark surfaces.
+
+### 3.3 Surface Hierarchy
+
+Surface hierarchy must be established through solid-color contrast rather than elevation.
+
+**Light Mode**
+
+| Layer | Color |
+|---|---|
+| Main Background | `#F0F2F2` |
+| Primary Surface | `#FFFFFF` |
+| Secondary Surface | `#E5E9E9` |
+| Hover Surface | `#DCE2E2` |
+
+**Dark Mode**
+
+| Layer | Color |
+|---|---|
+| Main Background | `#1C1F1F` |
+| Primary Surface | `#080A0A` |
+| Secondary Surface | `#292D2D` |
+| Hover Surface | `#353A3A` |
+
+#### Surface Rules
+
+- Cards and foreground containers must be distinguishable from the main background.
+- Use solid colors exclusively.
+- Do not introduce shadows, gradients, or elevation.
+- Avoid nesting surfaces with nearly identical colors.
+- Surface colors must remain consistent across the interface.
+- Use whitespace to reinforce separation.
+- Preserve subtle neutral-teal undertones.
+- Use semantic surface tokens rather than arbitrary background colors.
+
+### 3.4 Brand Color Usage
+
+Teal is the signature accent color.
+
+Use teal for:
+
+- Primary interactive elements
+- Important emphasis
+- Active states
+- Selected states
+- Interactive text
+- Links
+- Focus indicators
+- Meaningful animated accents
+
+Avoid:
+
+- Applying teal to every component
+- Large areas of saturated teal without purpose
+- Introducing unrelated accent colors
+- Using teal for ordinary body text
+- Relying solely on color to communicate state
+
+### 3.5 Color Accessibility
+
+- Maintain at least 4.5:1 contrast for normal text.
+- Maintain at least 3:1 for large text and meaningful non-text UI indicators.
+- Use darker teal variants when teal text on light backgrounds does not meet contrast requirements.
+- Use appropriate foreground colors for solid teal elements.
+- Do not assume white text is readable on every teal shade.
+- Validate contrast independently in both themes.
+- Keep hover, active, disabled, and focus states distinguishable.
+
+## 4. Typography
+
+The typography system combines the technical character of JetBrains Mono with the readability of Inter.
+
+### 4.1 Font Families
+
+**JetBrains Mono**
+
+Used for:
+
+- Headings
+- Titles
+- Prominent technical labels
+- Short technical emphasis
+
+**Inter**
+
+Used for:
+
+- Body text
+- Paragraphs
+- Buttons
+- Form controls
+- Supporting descriptions
+- UI labels
+- Navigation text
+
+Avoid introducing additional font families without a clear reason.
+
+### 4.2 Typography Scale
+
+| Role | Font | Size | Weight | Line Height |
+|---|---|---|---|---|
+| Display | JetBrains Mono | 48–64px | 600 | 1.1 |
+| Heading XL | JetBrains Mono | 36px | 600 | 1.2 |
+| Heading LG | JetBrains Mono | 30px | 600 | 1.25 |
+| Heading MD | JetBrains Mono | 24px | 600 | 1.3 |
+| Heading SM | JetBrains Mono | 20px | 500 | 1.35 |
+| Body LG | Inter | 18px | 400 | 1.7 |
+| Body MD | Inter | 16px | 400 | 1.6 |
+| Body SM | Inter | 14px | 400 | 1.5 |
+| Caption | Inter | 12px | 400 | 1.5 |
+| Button | Inter | 14–16px | 500 | 1.4 |
+
+### 4.3 Typography Rules
+
+- Use JetBrains Mono consistently for primary headings.
+- Use Inter for general content.
+- Prefer sentence case over uppercase.
+- Keep font weights restrained.
+- Avoid excessive bold text.
+- Use font size and weight to establish hierarchy.
+- Maintain comfortable paragraph line heights.
+- Avoid unnecessary letter spacing.
+- Apply subtle negative letter spacing to large headings only when appropriate.
+- Use responsive typography scaling.
+- Preserve readability across different viewport sizes.
+
+## 5. Corner Radius
+
+Use soft, modern rounded corners without making components excessively pill-shaped.
+
+| Token | Value | Usage |
+|---|---|---|
+| Radius XS | 4px | Small visual details |
+| Radius SM | 6px | Compact controls |
+| Radius MD | 10px | Buttons and inputs |
+| Radius LG | 16px | Cards and surfaces |
+| Radius XL | 20px | Large containers |
+| Radius Full | 9999px | Circular or intentional pill elements |
+
+### Rules
+
+- Maintain consistent rounding within component categories.
+- Prefer 10px for interactive controls.
+- Prefer 16px for cards and surfaces.
+- Avoid excessive rounding.
+- Avoid mixing sharp and rounded corners without purpose.
+- Use full rounding only when appropriate.
+
+## 6. Component Styling
+
+These guidelines define the visual treatment of common interface components without prescribing which components must exist.
+
+### 6.1 Buttons
+
+- Flat appearance.
+- No shadows.
+- Soft rounded corners.
+- Consistent padding.
+- Clear interaction feedback.
+- Smooth state transitions.
+- Inter medium-weight typography.
+
+**Primary Buttons**
+
+- Solid teal background.
+- Accessible foreground text.
+- Theme-appropriate teal hover state.
+- Subtle press feedback.
+
+**Secondary Buttons**
+
+- Neutral surface background.
+- Primary text color.
+- Clear surface differentiation.
+- Smooth background transition on hover.
+
+**Ghost Buttons**
+
+- Transparent default background.
+- Neutral text.
+- Subtle surface-color change on hover.
+
+### 6.2 Cards
+
+- No visible borders by default.
+- No shadows.
+- No gradients.
+- Solid surface background.
+- Soft 16px rounded corners.
+- Sufficient internal spacing.
+- Optional subtle motion-based interaction feedback.
+
+#### Light Mode Cards
+
+- Background: `#FFFFFF`
+- Surrounding page background: `#F0F2F2`
+
+#### Dark Mode Cards
+
+- Background: `#080A0A`
+- Surrounding page background: `#1C1F1F`
+
+Cards must remain distinguishable from their surrounding background through surface contrast rather than elevation.
+
+### 6.3 Inputs
+
+- Borderless or minimally bordered appearance.
+- Solid neutral surface backgrounds.
+- Soft rounded corners.
+- Clear text and placeholder contrast.
+- Teal focus indication.
+- Smooth hover and focus transitions.
+- Accessible keyboard focus feedback.
+
+### 6.4 Links
+
+- Use teal for emphasized links.
+- Use neutral text for understated interactive links.
+- Provide visible hover and focus feedback.
+- Use underlines or equivalent identifiable treatment for inline links where needed.
+- Avoid relying exclusively on color to identify links in paragraphs.
+
+### 6.5 Labels and Badges
+
+- Prefer subtle neutral surfaces.
+- Use teal-tinted surfaces for meaningful emphasis.
+- Avoid excessively saturated backgrounds.
+- Maintain accessible foreground contrast.
+- Apply restrained corner rounding.
+- Keep visual styling lightweight.
+
+### 6.6 Icons
+
+- Prefer simple, modern line icons.
+- Use consistent stroke weights.
+- Avoid unnecessary decorative detail.
+- Use neutral colors by default.
+- Use teal for active and emphasized states.
+- Maintain consistent optical sizing.
+- Avoid gradients, shadows, and unnecessary icon backgrounds.
+
+## 7. Motion and Animation
+
+Animation is a defining characteristic of the design system.
+
+The motion language should feel expressive, fluid, modern, and intentional while remaining professional.
+
+Motion should contribute personality without making the interface distracting or slow.
+
+### 7.1 Motion Principles
+
+**Expressive**
+
+Animations may use noticeable but controlled movement, scaling, and transformation to create personality.
+
+**Fluid**
+
+Movement should feel smooth, continuous, and natural.
+
+**Purposeful**
+
+Every animation should communicate feedback, continuity, emphasis, or interaction.
+
+**Responsive**
+
+User-triggered animations should respond immediately.
+
+**Consistent**
+
+Components should share a coherent animation language.
+
+### 7.2 Animation Timing
+
+| Token | Duration | Usage |
+|---|---|---|
+| Instant | 100ms | Immediate feedback |
+| Fast | 150–200ms | Hover and press |
+| Normal | 250–350ms | Standard transitions |
+| Expressive | 400–600ms | Reveals and transformations |
+| Extended | 600–800ms | Special expressive sequences |
+
+Avoid extended animations for routine interactions.
+
+### 7.3 Easing
+
+**Primary Expressive Easing**
+
+`cubic-bezier(0.22, 1, 0.36, 1)`
+
+**Standard Easing**
+
+`cubic-bezier(0.4, 0, 0.2, 1)`
+
+**Exit Easing**
+
+`cubic-bezier(0.4, 0, 1, 1)`
+
+Spring-inspired movement may be used for expressive interactions when it remains controlled and avoids excessive bouncing.
+
+### 7.4 Hover Interactions
+
+Hover states should feel responsive and polished.
+
+Allowed treatments:
+
+- Subtle scaling
+- Small translations
+- Color transitions
+- Background transitions
+- Icon movement
+- Underline animations
+- Controlled content transformations
+
+Recommended transforms:
+
+- Scale: 1.01–1.03
+- Translation: 2–6px
+- Duration: 150–250ms
+
+Avoid exaggerated movement during routine interactions.
+
+### 7.5 Entrance Animations
+
+Entrance animations may combine:
+
+- Opacity transitions
+- Small vertical translations
+- Subtle scaling
+- Controlled staggered timing
+
+Recommended characteristics:
+
+- Smooth ease-out movement
+- Limited translation distance
+- Natural progression
+- No excessive delay
+
+Avoid large off-screen movements and repetitive dramatic reveals.
+
+### 7.6 Microinteractions
+
+Microinteractions should provide satisfying visual feedback.
+
+Examples:
+
+- Buttons subtly compress on press.
+- Icons shift during hover.
+- Interactive text changes smoothly.
+- Focus states animate into view.
+- Selected states transition fluidly.
+- Visual elements respond subtly to pointer interaction.
+
+Microinteractions must remain consistent and should not interfere with functionality.
+
+### 7.7 Continuous Animations
+
+Continuous motion may be used sparingly when it meaningfully contributes to the visual identity.
+
+Rules:
+
+- Avoid unnecessary infinite loops.
+- Avoid excessive floating or bouncing.
+- Keep ambient movement subtle.
+- Never allow motion to compete with important content.
+- Stop or pause animations when they are no longer relevant.
+
+### 7.8 Animation Performance
+
+- Prefer animating `transform` and `opacity`.
+- Avoid layout-heavy animations where possible.
+- Avoid expensive animated visual filters.
+- Avoid unnecessary reflows.
+- Maintain responsive interactions during transitions.
+- Use GPU-friendly animation techniques appropriately.
+- Avoid indiscriminate use of `will-change`.
+
+### 7.9 Reduced Motion
+
+Respect the user's `prefers-reduced-motion` setting.
+
+When reduced motion is enabled:
+
+- Remove nonessential entrance animations.
+- Disable decorative continuous motion.
+- Avoid large translations and scaling.
+- Prefer immediate state changes or short opacity transitions.
+- Preserve essential interaction feedback.
+
+Expressive motion must not compromise accessibility.
+
+## 8. Spacing and Visual Rhythm
+
+Use a consistent spacing scale.
+
+| Token | Value |
+|---|---|
+| Space 1 | 4px |
+| Space 2 | 8px |
+| Space 3 | 12px |
+| Space 4 | 16px |
+| Space 5 | 20px |
+| Space 6 | 24px |
+| Space 8 | 32px |
+| Space 10 | 40px |
+| Space 12 | 48px |
+| Space 16 | 64px |
+
+### Rules
+
+- Use consistent spacing increments.
+- Prefer whitespace over decorative separators.
+- Avoid cramped components.
+- Keep spacing proportional to typography and component size.
+- Use spacing to reinforce visual hierarchy.
+- Maintain consistent visual rhythm.
+
+This section defines spacing tokens only and does not prescribe page layouts or content arrangements.
+
+## 9. Theme Behavior
+
+Both themes must preserve the same design identity.
+
+Theme switching should update colors and surfaces without changing the fundamental visual language.
+
+### 9.1 Light Theme
+
+- Main background: `#F0F2F2`
+- Primary surface: `#FFFFFF`
+- Secondary surface: `#E5E9E9`
+- Main text: `#171717`
+- Primary accent: `#0D9488`
+
+### 9.2 Dark Theme
+
+- Main background: `#1C1F1F`
+- Primary surface: `#080A0A`
+- Secondary surface: `#292D2D`
+- Main text: `#F5F5F5`
+- Primary accent: `#2DD4BF`
+
+### 9.3 Theme Transition
+
+- Use smooth color transitions.
+- Recommended duration: 200–300ms.
+- Avoid dramatic full-screen theme-switch animations.
+- Do not animate large geometry changes during theme switching.
+- Respect reduced-motion preferences.
+- Ensure all components use semantic theme tokens.
+
+## 10. Accessibility
+
+The design must remain usable and legible in both themes.
+
+- Follow WCAG AA contrast guidelines.
+- Maintain readable typography.
+- Provide clear keyboard focus indicators.
+- Ensure interactive states remain distinguishable.
+- Avoid relying exclusively on color.
+- Support reduced-motion preferences.
+- Aim for interactive hit targets of at least 44×44px.
+- Maintain typography readability at smaller viewport sizes.
+- Preserve usability at increased browser zoom.
+- Avoid animations that obstruct interaction.
+
+Accessibility takes priority over visual minimalism when they conflict.
+
+## 11. Visual Restrictions
+
+The following treatments are prohibited unless the design system is explicitly revised:
+
+- Box shadows
+- Drop shadows
+- Gradient backgrounds
+- Gradient text
+- Glassmorphism
+- Neumorphism
+- Heavy borders
+- Excessive outlines
+- Saturated multi-color palettes
+- Unnecessary decorative shapes
+- Excessive corner rounding
+- Uncontrolled animations
+- Excessive motion blur
+- Inconsistent icon styles
+- Arbitrary typography variations
+- Background and foreground colors with insufficient visual separation
+
+## 12. Do's and Don'ts
+
+### Do
+
+- Use teal as the signature accent.
+- Maintain consistent light and dark themes.
+- Use `#F0F2F2` for the light background.
+- Use `#FFFFFF` for light foreground surfaces.
+- Use `#1C1F1F` for the dark background.
+- Use `#080A0A` for dark foreground surfaces.
+- Maintain visible tonal separation between background and cards.
+- Use JetBrains Mono for headings.
+- Use Inter for body text and UI controls.
+- Prefer borderless, flat components.
+- Apply soft rounded corners consistently.
+- Use expressive, polished motion.
+- Establish visual hierarchy through typography and color.
+- Maintain accessible contrast and focus states.
+- Reuse semantic design tokens.
+
+### Don't
+
+- Add shadows or elevation.
+- Introduce gradients.
+- Add borders to every component.
+- Use pure white as the main light background.
+- Use pure black as the main dark background.
+- Use nearly identical background and foreground surface colors.
+- Introduce additional accent colors unnecessarily.
+- Mix unrelated font families.
+- Use excessive corner rounding.
+- Animate every element.
+- Use excessive bouncing or decorative motion.
+- Create unnecessary visual complexity.
+- Sacrifice usability for aesthetics.
+- Hardcode theme-specific colors into reusable components.
+
+## 13. Implementation Guidance
+
+This document serves as the visual source of truth.
+
+All styling decisions should derive from centralized semantic design tokens.
+
+Implementation must:
+
+1. Define centralized light and dark theme variables.
+2. Keep brand colors separate from semantic surface colors.
+3. Preserve the exact background and primary surface colors defined in this document.
+4. Maintain clear tonal separation between background and foreground components.
+5. Reuse typography tokens consistently.
+6. Reuse the established radius and spacing scales.
+7. Apply consistent animation durations and easing.
+8. Respect reduced-motion preferences.
+9. Use semantic colors instead of hardcoded component-level values.
+10. Preserve the flat, borderless visual language.
+11. Maintain accessible interaction feedback.
+12. Avoid introducing visual styles that contradict this document.
+
+When making a visual decision not explicitly covered here, prioritize consistency, minimalism, accessibility, surface clarity, and the established teal-based identity.
+
+## 14. Scope of This Document
+
+This document governs:
+
+- Color system
+- Light and dark themes
+- Typography
+- Surface styling
+- Corner radii
+- Component visual appearance
+- Motion and animation
+- Spacing tokens
+- Visual consistency
+- Accessibility standards
+
+This document does not define:
+
+- Application features
+- Page architecture
+- Content structure
+- Navigation hierarchy
+- Page or section arrangements
+- Business logic
+- Functional requirements
+
+It is a visual design guideline only and must not be interpreted as a product requirements document or layout specification.
