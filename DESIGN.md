@@ -155,7 +155,7 @@ The light theme uses a soft, near-white background with pure white foreground su
 
 ### 3.2 Dark Theme
 
-The dark theme uses a near-black background with deeper black foreground surfaces.
+The dark theme uses a deep black background with lighter near-black foreground surfaces.
 
 | Token | Hex | Purpose |
 |---|---|---|
@@ -163,8 +163,8 @@ The dark theme uses a near-black background with deeper black foreground surface
 | Primary Hover | `#5EEAD4` | Hover state |
 | Primary Active | `#14B8A6` | Pressed state |
 | Primary Soft | `#134E4A` | Subtle teal backgrounds |
-| Background | `#1C1F1F` | Main background |
-| Surface | `#080A0A` | Cards and foreground surfaces |
+| Background | `#080A0A` | Main background |
+| Surface | `#1C1F1F` | Cards and foreground surfaces |
 | Surface Secondary | `#292D2D` | Secondary component surfaces |
 | Surface Hover | `#353A3A` | Neutral hover state |
 | Text Primary | `#F5F5F5` | Main text |
@@ -176,8 +176,8 @@ The dark theme uses a near-black background with deeper black foreground surface
 
 #### Dark Theme Rules
 
-- Use `#1C1F1F` as the main background.
-- Use `#080A0A` for primary foreground surfaces.
+- Use `#080A0A` as the main background.
+- Use `#1C1F1F` for primary foreground surfaces.
 - Use `#292D2D` for secondary surfaces.
 - Preserve visible separation between the background and foreground elements.
 - Avoid pure black as the main page background.
@@ -202,8 +202,8 @@ Surface hierarchy must be established through solid-color contrast rather than e
 
 | Layer | Color |
 |---|---|
-| Main Background | `#1C1F1F` |
-| Primary Surface | `#080A0A` |
+| Main Background | `#080A0A` |
+| Primary Surface | `#1C1F1F` |
 | Secondary Surface | `#292D2D` |
 | Hover Surface | `#353A3A` |
 
@@ -382,8 +382,8 @@ These guidelines define the visual treatment of common interface components with
 
 #### Dark Mode Cards
 
-- Background: `#080A0A`
-- Surrounding page background: `#1C1F1F`
+- Background: `#1C1F1F`
+- Surrounding page background: `#080A0A`
 
 Cards must remain distinguishable from their surrounding background through surface contrast rather than elevation.
 
@@ -617,8 +617,8 @@ Theme switching should update colors and surfaces without changing the fundament
 
 ### 9.2 Dark Theme
 
-- Main background: `#1C1F1F`
-- Primary surface: `#080A0A`
+- Main background: `#080A0A`
+- Primary surface: `#1C1F1F`
 - Secondary surface: `#292D2D`
 - Main text: `#F5F5F5`
 - Primary accent: `#2DD4BF`
@@ -678,8 +678,8 @@ The following treatments are prohibited unless the design system is explicitly r
 - Maintain consistent light and dark themes.
 - Use `#F0F2F2` for the light background.
 - Use `#FFFFFF` for light foreground surfaces.
-- Use `#1C1F1F` for the dark background.
-- Use `#080A0A` for dark foreground surfaces.
+- Use `#080A0A` for the dark background.
+- Use `#1C1F1F` for dark foreground surfaces.
 - Maintain visible tonal separation between background and cards.
 - Use JetBrains Mono for headings.
 - Use Inter for body text and UI controls.
