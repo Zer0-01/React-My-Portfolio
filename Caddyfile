@@ -1,0 +1,4 @@
+portfolio.anaszulkifli.dev {
+    encode zstd gzip
+    reverse_proxy portfolio:3000
+}
