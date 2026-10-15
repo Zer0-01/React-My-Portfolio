@@ -41,9 +41,9 @@ export const featuredProjects: FeaturedProject[] = [
     technologies: ["Next.js", "Go", "PostgreSQL"],
     imageFormat: "desktop",
     images: [
-      "/projects/lqstudio/Screenshot 2026-09-24 at 2.01.46 AM.png",
-      "/projects/lqstudio/Screenshot 2026-09-24 at 2.03.48 AM.png",
-      "/projects/lqstudio/Screenshot 2026-09-24 at 2.04.23 AM.png",
+      "/projects/lqstudio/lqstudio_1.png",
+      "/projects/lqstudio/lqstudio_2.png",
+      "/projects/lqstudio/lqstudio_3.png",
     ],
   },
   {
