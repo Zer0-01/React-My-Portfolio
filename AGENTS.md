@@ -16,6 +16,8 @@ No lint or test script is configured. Do not claim either check without adding i
 
 ## UI, Styling & Motion
 
+Use the `$hallmark` skill when building or designing new pages. For changes to an existing design, use it when the request explicitly names Hallmark.
+
 Use shadcn/ui as the default component library and Tailwind CSS as the default styling system. Treat `components/ui/` as vendor-managed: **do not modify files there**. Compose or extend primitives from `components/custom/` instead.
 
 `DESIGN.md` is the authoritative visual guideline. Use the semantic design tokens defined in `app/globals.css`; do not introduce arbitrary colors, spacing, radii, shadows, or typography when an existing token applies. Use Motion (`framer-motion`) for animation. Keep motion purposeful and restrained, and honor `prefers-reduced-motion`.
