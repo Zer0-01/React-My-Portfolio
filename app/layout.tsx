@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 
 import { Providers } from "@/app/providers";
-import { ThemeToggle } from "@/components/custom/ThemeToggle";
+import { SiteHeader } from "@/components/custom/SiteHeader";
+import { SiteFooter } from "@/components/custom/SiteFooter";
 import {
   siteDescription,
   siteLanguage,
@@ -122,8 +123,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: serializedStructuredData }}
         />
         <Providers>
-          <ThemeToggle />
+          <SiteHeader />
           {children}
+          <SiteFooter />
         </Providers>
       </body>
     </html>

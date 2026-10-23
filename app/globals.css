@@ -1,3 +1,5 @@
+/* Hallmark · redesign: full · scope: site · genre: modern-minimal · system: DESIGN.md · shape: portfolio index · hero: split portrait · signature: real project screens · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R5 V4 · weakest: E, unified spacing and focus states across routes */
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -11,6 +13,7 @@
   --color-popover: var(--surface);
   --color-popover-foreground: var(--foreground);
   --color-primary: var(--primary);
+  --color-brand-secondary: var(--brand-secondary);
   --color-primary-foreground: var(--primary-foreground);
   --color-primary-hover: var(--primary-hover);
   --color-primary-active: var(--primary-active);
@@ -77,16 +80,17 @@
 
 :root {
   color-scheme: light;
-  --background: #f0f2f2;
+  --background: #f8faf9;
   --surface: #ffffff;
-  --surface-secondary: #e5e9e9;
-  --surface-hover: #dce2e2;
+  --surface-secondary: #eaf0ed;
+  --surface-hover: #dfe9e5;
   --foreground: #171717;
   --text-secondary: #525252;
   --text-muted: #737373;
-  --primary: #0d9488;
-  --primary-hover: #0f766e;
-  --primary-active: #115e59;
+  --primary: #0f766e;
+  --brand-secondary: #b65f50;
+  --primary-hover: #115e59;
+  --primary-active: #134e4a;
   --primary-soft: #ccfbf1;
   --primary-action: #0f766e;
   --primary-foreground: #ffffff;
@@ -94,38 +98,59 @@
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
   --success: #15803d;
+  --dark-background: #0b1514;
+  --dark-surface: #142421;
+  --dark-surface-secondary: #20352f;
+  --dark-surface-hover: #294139;
+  --dark-foreground: #f5f5f5;
+  --dark-text-secondary: #a3a3a3;
+  --dark-text-muted: #8a8a8a;
+  --dark-primary: #5ed0bb;
+  --dark-brand-secondary: #e7a08c;
+  --dark-primary-hover: #79dcc9;
+  --dark-primary-active: #38bfa9;
+  --dark-primary-soft: #134e4a;
+  --dark-primary-foreground: #042f2e;
+  --dark-destructive: #f87171;
+  --dark-success: #4ade80;
 }
 
 .dark {
   color-scheme: dark;
-  --background: #080a0a;
-  --surface: #1c1f1f;
-  --surface-secondary: #292d2d;
-  --surface-hover: #353a3a;
-  --foreground: #f5f5f5;
-  --text-secondary: #a3a3a3;
-  --text-muted: #8a8a8a;
-  --primary: #2dd4bf;
-  --primary-hover: #5eead4;
-  --primary-active: #14b8a6;
-  --primary-soft: #134e4a;
-  --primary-action: #2dd4bf;
-  --primary-foreground: #042f2e;
-  --link: #5eead4;
-  --destructive: #f87171;
-  --destructive-foreground: #080a0a;
-  --success: #4ade80;
+  --background: var(--dark-background);
+  --surface: var(--dark-surface);
+  --surface-secondary: var(--dark-surface-secondary);
+  --surface-hover: var(--dark-surface-hover);
+  --foreground: var(--dark-foreground);
+  --text-secondary: var(--dark-text-secondary);
+  --text-muted: var(--dark-text-muted);
+  --primary: var(--dark-primary);
+  --brand-secondary: var(--dark-brand-secondary);
+  --primary-hover: var(--dark-primary-hover);
+  --primary-active: var(--dark-primary-active);
+  --primary-soft: var(--dark-primary-soft);
+  --primary-action: var(--dark-primary);
+  --primary-foreground: var(--dark-primary-foreground);
+  --link: var(--dark-primary-hover);
+  --destructive: var(--dark-destructive);
+  --destructive-foreground: var(--dark-background);
+  --success: var(--dark-success);
 }
 
 @layer base {
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: clip; }
   body {
     @apply bg-background font-sans text-body-md text-foreground;
+    overflow-x: clip;
     transition: background-color var(--duration-normal) var(--ease-standard), color var(--duration-normal) var(--ease-standard);
   }
-  h1, h2, h3, h4 { @apply font-mono; }
+  h1, h2, h3, h4 { @apply font-mono; overflow-wrap: break-word; min-width: 0; text-wrap: balance; }
   :focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
   ::selection { @apply bg-primary-soft text-foreground; }
+  * { scrollbar-color: var(--surface-hover) var(--background); }
+  a, button { -webkit-tap-highlight-color: transparent; }
+  a:active, button:active { transform: translateY(1px); }
+  button:disabled, [aria-disabled="true"] { opacity: .55; cursor: not-allowed; }
 }
 
 @media (prefers-reduced-motion: reduce) {

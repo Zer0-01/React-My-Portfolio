@@ -2,12 +2,17 @@
 name: Teal Minimal Portfolio
 description: A modern, minimal, borderless portfolio design system with expressive motion, refined surfaces, and balanced light and dark themes.
 colors:
-  primary: "#0D9488"
-  secondary: "#64748B"
+  primary: "#0F766E"
+  secondary: "#B65F50"
   surface: "#FFFFFF"
-  background: "#F0F2F2"
+  background: "#F8FAF9"
   on-surface: "#171717"
   error: "#DC2626"
+dark-colors:
+  primary: "#5ED0BB"
+  secondary: "#E7A08C"
+  surface: "#142421"
+  background: "#0B1514"
 typography:
   heading:
     fontFamily: "JetBrains Mono"
@@ -100,8 +105,8 @@ Visual hierarchy must come from color contrast, typography, spacing, shape, and 
 Background and foreground surfaces must remain visually distinguishable.
 
 - Use deliberate tonal differences between the main background and foreground surfaces.
-- Maintain stronger surface separation than a typical ultra-minimal interface.
-- Avoid surface colors that are almost identical.
+- Keep the subtle background-to-surface distinction clear through spacing and the secondary surface layer.
+- Distinguish close light surfaces with spacing and the secondary surface layer.
 - Do not compensate for insufficient contrast by adding shadows or borders.
 - Preserve a neutral appearance with subtle teal undertones.
 
@@ -118,9 +123,9 @@ All components must share a coherent visual language.
 
 ## 3. Color System
 
-The color system combines a restrained teal brand accent with neutral backgrounds and contrasting foreground surfaces.
+The color system combines a restrained teal primary with a warm terracotta secondary, neutral backgrounds, and foreground surfaces.
 
-The palette is designed to support both light and dark themes while maintaining visible separation between layers without using shadows or borders.
+The palette is designed to support both light and dark themes. The light background and white surface have a subtle separation; the secondary surface provides a stronger layer when needed.
 
 ### 3.1 Light Theme
 
@@ -128,14 +133,15 @@ The light theme uses a soft, near-white background with pure white foreground su
 
 | Token | Hex | Purpose |
 |---|---|---|
-| Primary | `#0D9488` | Main teal accent |
-| Primary Hover | `#0F766E` | Hover state |
-| Primary Active | `#115E59` | Pressed state |
+| Primary | `#0F766E` | Main teal accent |
+| Secondary accent | `#B65F50` | Occasional warm emphasis |
+| Primary Hover | `#115E59` | Hover state |
+| Primary Active | `#134E4A` | Pressed state |
 | Primary Soft | `#CCFBF1` | Subtle teal backgrounds |
-| Background | `#F0F2F2` | Main background |
+| Background | `#F8FAF9` | Main background |
 | Surface | `#FFFFFF` | Cards and foreground surfaces |
-| Surface Secondary | `#E5E9E9` | Secondary component surfaces |
-| Surface Hover | `#DCE2E2` | Neutral hover state |
+| Surface Secondary | `#EAF0ED` | Secondary component surfaces |
+| Surface Hover | `#DFE9E5` | Neutral hover state |
 | Text Primary | `#171717` | Main text |
 | Text Secondary | `#525252` | Supporting text |
 | Text Muted | `#737373` | Muted text |
@@ -145,10 +151,10 @@ The light theme uses a soft, near-white background with pure white foreground su
 
 #### Light Theme Rules
 
-- Use `#F0F2F2` as the main background.
+- Use `#F8FAF9` as the main background.
 - Use `#FFFFFF` for primary foreground surfaces.
-- Use `#E5E9E9` for secondary surfaces.
-- Maintain clear separation between the background and cards.
+- Use `#EAF0ED` for secondary surfaces.
+- Use spacing and secondary surfaces to clarify the subtle background-to-card separation.
 - Keep teal usage purposeful and restrained.
 - Avoid excessive gray-on-gray layering.
 - Maintain a bright, clean, and polished appearance.
@@ -159,14 +165,15 @@ The dark theme uses a deep black background with lighter near-black foreground s
 
 | Token | Hex | Purpose |
 |---|---|---|
-| Primary | `#2DD4BF` | Main teal accent |
-| Primary Hover | `#5EEAD4` | Hover state |
-| Primary Active | `#14B8A6` | Pressed state |
+| Primary | `#5ED0BB` | Main teal accent |
+| Secondary accent | `#E7A08C` | Occasional warm emphasis |
+| Primary Hover | `#79DCC9` | Hover state |
+| Primary Active | `#38BFA9` | Pressed state |
 | Primary Soft | `#134E4A` | Subtle teal backgrounds |
-| Background | `#080A0A` | Main background |
-| Surface | `#1C1F1F` | Cards and foreground surfaces |
-| Surface Secondary | `#292D2D` | Secondary component surfaces |
-| Surface Hover | `#353A3A` | Neutral hover state |
+| Background | `#0B1514` | Main background |
+| Surface | `#142421` | Cards and foreground surfaces |
+| Surface Secondary | `#20352F` | Secondary component surfaces |
+| Surface Hover | `#294139` | Neutral hover state |
 | Text Primary | `#F5F5F5` | Main text |
 | Text Secondary | `#A3A3A3` | Supporting text |
 | Text Muted | `#8A8A8A` | Muted text |
@@ -176,14 +183,14 @@ The dark theme uses a deep black background with lighter near-black foreground s
 
 #### Dark Theme Rules
 
-- Use `#080A0A` as the main background.
-- Use `#1C1F1F` for primary foreground surfaces.
-- Use `#292D2D` for secondary surfaces.
+- Use `#0B1514` as the main background.
+- Use `#142421` for primary foreground surfaces.
+- Use `#20352F` for secondary surfaces.
 - Preserve visible separation between the background and foreground elements.
 - Avoid pure black as the main page background.
 - Use brighter teal accents to maintain visual presence.
 - Keep neutral text readable without appearing overly bright.
-- Avoid blue-tinted dark surfaces.
+- Keep dark surfaces green-tinted rather than blue-tinted.
 
 ### 3.3 Surface Hierarchy
 
@@ -193,19 +200,19 @@ Surface hierarchy must be established through solid-color contrast rather than e
 
 | Layer | Color |
 |---|---|
-| Main Background | `#F0F2F2` |
+| Main Background | `#F8FAF9` |
 | Primary Surface | `#FFFFFF` |
-| Secondary Surface | `#E5E9E9` |
-| Hover Surface | `#DCE2E2` |
+| Secondary Surface | `#EAF0ED` |
+| Hover Surface | `#DFE9E5` |
 
 **Dark Mode**
 
 | Layer | Color |
 |---|---|
-| Main Background | `#080A0A` |
-| Primary Surface | `#1C1F1F` |
-| Secondary Surface | `#292D2D` |
-| Hover Surface | `#353A3A` |
+| Main Background | `#0B1514` |
+| Primary Surface | `#142421` |
+| Secondary Surface | `#20352F` |
+| Hover Surface | `#294139` |
 
 #### Surface Rules
 
@@ -215,12 +222,12 @@ Surface hierarchy must be established through solid-color contrast rather than e
 - Avoid nesting surfaces with nearly identical colors.
 - Surface colors must remain consistent across the interface.
 - Use whitespace to reinforce separation.
-- Preserve subtle neutral-teal undertones.
+- Preserve subtle neutral-teal undertones in light mode and green-tinted dark surfaces.
 - Use semantic surface tokens rather than arbitrary background colors.
 
 ### 3.4 Brand Color Usage
 
-Teal is the signature accent color.
+Teal is the signature accent color. The warm secondary accent is used sparingly for meaningful emphasis, never as a substitute for the primary action. In code, `--brand-secondary` is this accent; `--surface-secondary` remains a neutral surface token.
 
 Use teal for:
 
@@ -237,7 +244,7 @@ Avoid:
 
 - Applying teal to every component
 - Large areas of saturated teal without purpose
-- Introducing unrelated accent colors
+- Introducing accent colors beyond the defined teal and warm secondary
 - Using teal for ordinary body text
 - Relying solely on color to communicate state
 
@@ -378,12 +385,12 @@ These guidelines define the visual treatment of common interface components with
 #### Light Mode Cards
 
 - Background: `#FFFFFF`
-- Surrounding page background: `#F0F2F2`
+- Surrounding page background: `#F8FAF9`
 
 #### Dark Mode Cards
 
-- Background: `#1C1F1F`
-- Surrounding page background: `#080A0A`
+- Background: `#142421`
+- Surrounding page background: `#0B1514`
 
 Cards must remain distinguishable from their surrounding background through surface contrast rather than elevation.
 
@@ -609,19 +616,21 @@ Theme switching should update colors and surfaces without changing the fundament
 
 ### 9.1 Light Theme
 
-- Main background: `#F0F2F2`
+- Main background: `#F8FAF9`
 - Primary surface: `#FFFFFF`
-- Secondary surface: `#E5E9E9`
+- Secondary surface: `#EAF0ED`
 - Main text: `#171717`
-- Primary accent: `#0D9488`
+- Primary accent: `#0F766E`
+- Secondary accent: `#B65F50`
 
 ### 9.2 Dark Theme
 
-- Main background: `#080A0A`
-- Primary surface: `#1C1F1F`
-- Secondary surface: `#292D2D`
+- Main background: `#0B1514`
+- Primary surface: `#142421`
+- Secondary surface: `#20352F`
 - Main text: `#F5F5F5`
-- Primary accent: `#2DD4BF`
+- Primary accent: `#5ED0BB`
+- Secondary accent: `#E7A08C`
 
 ### 9.3 Theme Transition
 
@@ -661,7 +670,7 @@ The following treatments are prohibited unless the design system is explicitly r
 - Neumorphism
 - Heavy borders
 - Excessive outlines
-- Saturated multi-color palettes
+- Unrelated saturated accents beyond the defined palette
 - Unnecessary decorative shapes
 - Excessive corner rounding
 - Uncontrolled animations
@@ -676,10 +685,10 @@ The following treatments are prohibited unless the design system is explicitly r
 
 - Use teal as the signature accent.
 - Maintain consistent light and dark themes.
-- Use `#F0F2F2` for the light background.
+- Use `#F8FAF9` for the light background.
 - Use `#FFFFFF` for light foreground surfaces.
-- Use `#080A0A` for the dark background.
-- Use `#1C1F1F` for dark foreground surfaces.
+- Use `#0B1514` for the dark background.
+- Use `#142421` for dark foreground surfaces.
 - Maintain visible tonal separation between background and cards.
 - Use JetBrains Mono for headings.
 - Use Inter for body text and UI controls.
@@ -697,8 +706,8 @@ The following treatments are prohibited unless the design system is explicitly r
 - Add borders to every component.
 - Use pure white as the main light background.
 - Use pure black as the main dark background.
-- Use nearly identical background and foreground surface colors.
-- Introduce additional accent colors unnecessarily.
+- Rely on barely distinguishable surfaces without spacing or a secondary surface layer.
+- Introduce accent colors beyond the defined teal and warm secondary.
 - Mix unrelated font families.
 - Use excessive corner rounding.
 - Animate every element.
