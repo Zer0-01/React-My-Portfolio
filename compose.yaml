@@ -5,22 +5,10 @@ services:
     restart: unless-stopped
     expose:
       - "3000"
+    networks:
+      - web
 
-  caddy:
-    image: caddy:2
-    container_name: portfolio-caddy
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
-      - caddy_data:/data
-      - caddy_config:/config
-    depends_on:
-      - portfolio
+networks:
+  web:
+    external: true
 
-volumes:
-  caddy_data:
-  caddy_config:

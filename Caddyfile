@@ -1,9 +1,0 @@
-anaszulkifli.dev, www.anaszulkifli.dev, portfolio.anaszulkifli.dev {
-    encode zstd gzip
-    reverse_proxy portfolio:3000
-}
-
-keyplee.com, www.keyplee.com {
-    encode zstd gzip
-    reverse_proxy keyplee:3000
-}
