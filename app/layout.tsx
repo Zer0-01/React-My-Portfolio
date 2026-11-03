@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 
 import { Providers } from "@/app/providers";
 import { SiteHeader } from "@/components/custom/SiteHeader";
@@ -19,8 +19,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const jetBrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
 });
 
@@ -116,7 +116,7 @@ export default function RootLayout({
   return (
     <html lang={siteLanguage} className="dark" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${jetBrainsMono.variable} min-h-screen bg-background text-foreground antialiased`}
+        className={`${inter.variable} ${spaceGrotesk.variable} min-h-screen bg-background text-foreground antialiased`}
       >
         <script
           type="application/ld+json"
