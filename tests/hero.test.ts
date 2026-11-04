@@ -110,26 +110,13 @@ test("places the tech stack after experience", () => {
   assert.ok(techStackIndex > experienceIndex, "expected tech stack after experience");
 });
 
-test("presents the stack as product-building capabilities without a duplicate skills tab", () => {
-  assert.match(homePage, />Web experiences</);
-  assert.match(homePage, />React</);
-  assert.match(homePage, />Next\.js</);
-  assert.match(homePage, />Vue</);
-  assert.match(homePage, />Nuxt</);
-
-  assert.match(homePage, />Cross-platform and native apps</);
-  assert.match(homePage, />Flutter</);
-  assert.match(homePage, />Kotlin</);
-  assert.match(homePage, />Swift</);
-
-  assert.match(homePage, />Services and data</);
-  assert.match(homePage, />NestJS</);
-  assert.match(homePage, />PostgreSQL</);
-
-  assert.match(homePage, />Delivery and collaboration</);
-  assert.match(homePage, />Docker</);
-  assert.match(homePage, />Git</);
-  assert.match(homePage, />GitHub</);
+test("groups the tech stack into short labelled rows without a skills tab", () => {
+  for (const group of ["Mobile", "Web", "Backend &amp; data", "AI tools", "Tooling"]) {
+    assert.match(homePage, new RegExp(`>${group}</h3>`));
+  }
+  for (const technology of ["Flutter", "Bloc", "Swift", "Kotlin", "Next\\.js", "React", "Nuxt", "Vue", "Tailwind CSS", "NestJS", "Go", "PostgreSQL", "Firebase", "Claude", "Codex", "Git", "GitHub", "Fastlane", "Netlify"]) {
+    assert.match(homePage, new RegExp(`>${technology}</li>`));
+  }
 
   assert.doesNotMatch(homePage, />Skills</);
 });

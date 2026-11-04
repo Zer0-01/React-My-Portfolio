@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 import { ScreenGallery } from "@/components/custom/ScreenGallery";
+import { TechTagList } from "@/components/custom/TechTagList";
 import { featuredProjects, formatProjectMeta } from "@/data/featured-projects";
 import { projects } from "@/data/projects";
 
@@ -29,11 +30,7 @@ export function SelectedWork() {
               <p className="mt-4 max-w-2xl text-body-lg text-muted-foreground">{project.summary}</p>
 
               <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
-                <ul aria-label={`${project.title} technologies`} className="flex flex-wrap gap-2">
-                  {project.technologies.map((technology) => (
-                    <li key={technology} className="rounded-sm bg-tag p-2 text-label-sm text-tag-foreground">{technology}</li>
-                  ))}
-                </ul>
+                <TechTagList technologies={project.technologies} label={`${project.title} technologies`} />
                 <Link href={`/projects/${project.slug}`} className={linkClass}>
                   View project
                   <span className="sr-only">: {project.title}</span>
