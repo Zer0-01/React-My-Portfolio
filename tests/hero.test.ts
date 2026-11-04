@@ -176,16 +176,18 @@ test("keeps the theme toggle accessible without rendering a tooltip", () => {
 test("publishes descriptive canonical and social metadata for the portfolio", () => {
   assert.match(
     homePage,
-    /<title>Anas Zulkifli \| Product-focused Developer<\/title>/,
+    /<title>Anas Zulkifli \| Software Engineer in Malaysia · Flutter<\/title>/,
   );
   assert.match(
     homePage,
-    /<meta name="description" content="Anas Zulkifli is a product-focused developer building reliable web and mobile experiences from idea to launch\."/,
+    /<meta name="description" content="Software engineer in Kuala Lumpur, Malaysia, building Flutter mobile apps and Next\.js web apps from idea to launch\. Open to full-time roles and freelance projects\."/,
   );
   assert.match(homePage, /<link rel="canonical" href="https:\/\/anaszulkifli\.dev"/);
   assert.match(homePage, /<meta property="og:type" content="website"/);
   assert.match(homePage, /<meta property="og:url" content="https:\/\/anaszulkifli\.dev"/);
   assert.match(homePage, /<meta name="twitter:card" content="summary_large_image"/);
+  assert.match(homePage, /<meta property="og:image" content="[^"]*\/opengraph-image\?/);
+  assert.match(homePage, /<meta property="og:image:width" content="1200"/);
 });
 
 test("describes the portfolio owner with crawlable structured data", () => {
@@ -193,14 +195,14 @@ test("describes the portfolio owner with crawlable structured data", () => {
   assert.match(homePage, /"@type":"Person"/);
   assert.match(homePage, /"name":"Anas Zulkifli"/);
   assert.match(homePage, /"url":"https:\/\/anaszulkifli\.dev"/);
-  assert.match(homePage, /"jobTitle":"Product-focused Developer"/);
+  assert.match(homePage, /"jobTitle":"Software Engineer"/);
 });
 
 test("publishes project-specific metadata instead of inheriting the homepage title", () => {
-  assert.match(projectPage, /<title>Numeru \| Anas Zulkifli<\/title>/);
+  assert.match(projectPage, /<title>Numeru: Flutter mobile app \| Anas Zulkifli<\/title>/);
   assert.match(
     projectPage,
-    /<meta name="description" content="A calculator app for everyday maths and splitting bills\."/,
+    /<meta name="description" content="A calculator app for everyday maths and splitting bills\. Built by Anas Zulkifli with Flutter, Bloc\."/,
   );
   assert.match(
     projectPage,
@@ -210,6 +212,12 @@ test("publishes project-specific metadata instead of inheriting the homepage tit
     projectPage,
     /<meta property="og:url" content="https:\/\/anaszulkifli\.dev\/projects\/numeru"/,
   );
+  assert.match(
+    projectPage,
+    /<meta property="og:image" content="[^"]*\/projects\/numeru\/opengraph-image\?/,
+  );
+  assert.match(projectPage, /"@type":"CreativeWork"/);
+  assert.match(projectPage, /"@type":"BreadcrumbList"/);
 });
 
 test("presents project facts, short sections and a next-project link", () => {

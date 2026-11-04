@@ -1,15 +1,30 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 
+import { JsonLd } from "@/components/custom/JsonLd";
 import { OutlineLinkButton } from "@/components/custom/OutlineLinkButton";
 import { ScreenGallery } from "@/components/custom/ScreenGallery";
 import { TechTagList } from "@/components/custom/TechTagList";
-import { getNextProject, getProject, type ProjectLinks } from "@/data/projects";
+import { getNextProject, getProject, projects, type ProjectLinks } from "@/data/projects";
+import { getProjectMetadata, getProjectStructuredData } from "@/lib/projectSeo";
 import { cn } from "@/lib/utils";
 
 interface Props {
   params: Promise<{ slug: string }>;
+}
+
+/** Every project page is built ahead of time; unknown slugs 404. */
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return projects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const project = getProject((await params).slug);
+  return project ? getProjectMetadata(project) : {};
 }
 
 const linkLabels: Record<keyof ProjectLinks, string> = {
@@ -52,6 +67,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
   return (
     <main className="mx-auto w-full max-w-6xl px-5 pb-16 pt-8 md:px-8 md:pt-16">
+      <JsonLd data={getProjectStructuredData(project)} />
       <header>
         <h1 className="text-headline-display">{project.title}</h1>
         <p className="mt-6 max-w-2xl text-body-lg text-muted-foreground">{project.summary}</p>

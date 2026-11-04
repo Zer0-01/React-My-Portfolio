@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 
+import { JsonLd } from "@/components/custom/JsonLd";
 import { Providers } from "@/app/providers";
 import { SiteHeader } from "@/components/custom/SiteHeader";
 import { SiteFooter } from "@/components/custom/SiteFooter";
+import { experience } from "@/data/experience";
+import { githubHref, linkedinHref } from "@/data/profile";
+import { techStack } from "@/data/tech-stack";
 import {
+  personId,
+  profileImage,
   siteDescription,
   siteLanguage,
   siteLocale,
   siteName,
+  siteTitle,
   siteUrl,
+  websiteId,
 } from "@/lib/seo";
 
 import "./globals.css";
@@ -27,34 +35,24 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Anas Zulkifli | Product-focused Developer",
+    default: siteTitle,
     template: "%s | Anas Zulkifli",
   },
   description: siteDescription,
-  authors: [{ name: "Anas Zulkifli", url: siteUrl }],
-  creator: "Anas Zulkifli",
-  alternates: {
-    canonical: "/",
-  },
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
   openGraph: {
     type: "website",
     locale: siteLocale,
     url: siteUrl,
     siteName,
-    title: "Anas Zulkifli | Product-focused Developer",
+    title: siteTitle,
     description: siteDescription,
-    images: [
-      {
-        url: "/profile-picture.jpeg",
-        alt: "Anas Zulkifli",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anas Zulkifli | Product-focused Developer",
+    title: siteTitle,
     description: siteDescription,
-    images: ["/profile-picture.jpeg"],
   },
   robots: {
     index: true,
@@ -69,44 +67,43 @@ export const metadata: Metadata = {
   },
 };
 
+/** Engineering skills only; the AI tools group is not a field of expertise. */
+const skills = techStack
+  .filter((group) => group.title !== "AI tools")
+  .flatMap((group) => group.technologies);
+
+const currentEmployer = experience.find((entry) => entry.period.end === null);
+
 const structuredData = {
   "@context": "https://schema.org",
   "@graph": [
     {
       "@type": "Person",
-      "@id": `${siteUrl}/#person`,
-      name: "Anas Zulkifli",
+      "@id": personId,
+      name: siteName,
       url: siteUrl,
-      image: `${siteUrl}/profile-picture.jpeg`,
-      jobTitle: "Product-focused Developer",
-      sameAs: [
-        "https://www.linkedin.com/in/anas-zulkifli-mohd-jeffry",
-        "https://github.com/Zer0-01",
-      ],
-      knowsAbout: [
-        "Web development",
-        "Mobile application development",
-        "Product development",
-        "Flutter",
-        "Next.js",
-      ],
+      image: `${siteUrl}${profileImage}`,
+      jobTitle: "Software Engineer",
+      ...(currentEmployer && { worksFor: { "@type": "Organization", name: currentEmployer.company } }),
+      homeLocation: {
+        "@type": "Place",
+        name: "Kuala Lumpur, Malaysia",
+        address: { "@type": "PostalAddress", addressLocality: "Kuala Lumpur", addressCountry: "MY" },
+      },
+      sameAs: [linkedinHref, githubHref],
+      knowsAbout: ["Software engineering", "Mobile app development", "Web development", ...skills],
     },
     {
       "@type": "WebSite",
-      "@id": `${siteUrl}/#website`,
+      "@id": websiteId,
       url: siteUrl,
-      name: "Anas Zulkifli",
+      name: siteName,
       description: siteDescription,
-      inLanguage: "en-MY",
-      author: { "@id": `${siteUrl}/#person` },
+      inLanguage: siteLanguage,
+      author: { "@id": personId },
     },
   ],
 };
-
-const serializedStructuredData = JSON.stringify(structuredData).replace(
-  /</g,
-  "\\u003c",
-);
 
 export default function RootLayout({
   children,
@@ -118,10 +115,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} min-h-screen bg-background text-foreground antialiased`}
       >
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: serializedStructuredData }}
-        />
+        <JsonLd data={structuredData} />
         <Providers>
           <SiteHeader />
           {children}
