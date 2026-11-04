@@ -233,9 +233,9 @@ With Aonic Agriculture, you can:
         slug: "lq-studio",
         title: "LQ Studio",
         summary: "A smoother way to book a photography session.",
-        description: "As a Lakarsoft co-founder and developer, I helped create customer and admin experiences for managing photography packages, themes, add-ons, availability, bookings, customer details, tracking, and email notifications.",
+        description: "As a LakarSoft co-founder and developer, I helped create customer and admin experiences for managing photography packages, themes, add-ons, availability, bookings, customer details, tracking, and email notifications.",
         role: "Co-founder and Developer",
-        organization: "Lakarsoft",
+        organization: "LakarSoft",
         projectType: "web",
         features: [
             "Guided photography booking",

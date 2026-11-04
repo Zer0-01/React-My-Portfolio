@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ArrowUpRight, Github, Linkedin } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 
 import { LocalTime } from "@/components/custom/LocalTime";
 import { OutlineLinkButton } from "@/components/custom/OutlineLinkButton";
@@ -47,7 +47,6 @@ export function Hero() {
         >
           <a href={contactHref} target="_blank" rel="noopener noreferrer">
             Let&apos;s work together
-            <ArrowUpRight aria-hidden="true" />
             <span className="sr-only">(opens WhatsApp in a new tab)</span>
           </a>
         </Button>

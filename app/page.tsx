@@ -7,9 +7,9 @@ export default function Home() {
   return (
     <main className="mx-auto flex max-w-6xl flex-col items-center px-5 pb-12 md:px-8">
       <Hero />
+      <SelectedWork />
       <Experience />
       <TechStack />
-      <SelectedWork />
     </main>
   );
 }

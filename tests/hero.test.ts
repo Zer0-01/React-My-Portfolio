@@ -78,14 +78,14 @@ test("omits the standalone portfolio statistics section", () => {
   assert.doesNotMatch(homePage, /Side Projects/);
 });
 
-test("places professional experience between the hero and selected work", () => {
+test("places selected work directly after the hero, before experience", () => {
   const heroIndex = homePage.indexOf('id="hero-heading"');
-  const experienceIndex = homePage.indexOf('id="experience"');
   const workIndex = homePage.indexOf('id="work"');
+  const experienceIndex = homePage.indexOf('id="experience"');
 
   assert.ok(heroIndex >= 0, "expected the hero heading to be rendered");
-  assert.ok(experienceIndex > heroIndex, "expected experience after the hero");
-  assert.ok(workIndex > experienceIndex, "expected work after experience");
+  assert.ok(workIndex > heroIndex, "expected work after the hero");
+  assert.ok(experienceIndex > workIndex, "expected experience after work");
 });
 
 test("shows role progression and concrete contributions without product names", () => {
@@ -101,14 +101,12 @@ test("shows role progression and concrete contributions without product names", 
   assert.doesNotMatch(homePage, /MIST FA|Ronpos/);
 });
 
-test("places the tech stack between experience and selected work", () => {
+test("places the tech stack after experience", () => {
   const experienceIndex = homePage.indexOf('id="experience"');
   const techStackIndex = homePage.indexOf('id="tech-stack"');
-  const workIndex = homePage.indexOf('id="work"');
 
   assert.ok(experienceIndex >= 0, "expected experience to be rendered");
   assert.ok(techStackIndex > experienceIndex, "expected tech stack after experience");
-  assert.ok(workIndex > techStackIndex, "expected work after tech stack");
 });
 
 test("presents the stack as product-building capabilities without a duplicate skills tab", () => {
@@ -135,21 +133,24 @@ test("presents the stack as product-building capabilities without a duplicate sk
   assert.doesNotMatch(homePage, />Skills</);
 });
 
-test("features only the three selected projects", () => {
+test("features three projects and lists the rest as more projects", () => {
   assert.match(homePage, />Aonic Agriculture</);
   assert.match(homePage, />LQ Studio</);
   assert.match(homePage, />Wedding RSVP</);
 
-  assert.doesNotMatch(homePage, />Numeru</);
-  assert.doesNotMatch(homePage, />Vortex Academia/);
-  assert.doesNotMatch(homePage, />ISeBa</);
-  assert.doesNotMatch(homePage, />Muzika Kata</);
+  assert.match(homePage, />More projects</);
+  for (const slug of ["numeru", "vortex-academia", "iseba", "muzika-kata"]) {
+    assert.match(homePage, new RegExp(`href="/projects/${slug}"`));
+  }
 });
 
-test("presents project outcomes and restrained technology context", () => {
-  assert.match(homePage, /including in remote areas/);
-  assert.match(homePage, /replaced manual WhatsApp coordination/i);
-  assert.match(homePage, /replaced printed invitations/i);
+test("describes each featured project in one short line with its technologies", () => {
+  assert.match(homePage, /Shopping, credit and offline field tools for farmers, in one app\./);
+  assert.match(homePage, /Replaced WhatsApp back-and-forth with online session booking\./);
+  assert.match(homePage, /My own wedding invitation: details, RSVPs and messages in one link\./);
+  assert.match(homePage, />Mobile Developer · Aonic</);
+  assert.match(homePage, />Co-founder &amp; Developer · LakarSoft</);
+  assert.match(homePage, />Personal project</);
 
   assert.match(homePage, />Flutter</);
   assert.match(homePage, />Go</);
@@ -158,15 +159,15 @@ test("presents project outcomes and restrained technology context", () => {
 });
 
 test("uses product imagery without exposing an unfinished case-study action", () => {
-  assert.match(homePage, /alt="Aonic Agriculture product screen/);
-  assert.match(homePage, /alt="LQ Studio booking screen/);
-  assert.match(homePage, /alt="Wedding RSVP screen/);
+  assert.match(homePage, /alt="Aonic Agriculture screen 1 of 5"/);
+  assert.match(homePage, /alt="LQ Studio screen 1 of 6"/);
+  assert.match(homePage, /alt="Wedding RSVP screen 1 of 5"/);
   assert.doesNotMatch(homePage, /View case study/i);
 });
 
-test("identifies web project screenshots as desktop product screens", () => {
-  assert.match(homePage, /aria-label="LQ Studio desktop screen 1"/);
-  assert.match(homePage, /aria-label="Wedding RSVP desktop screen 1"/);
+test("lets visitors switch between web project screens", () => {
+  assert.match(homePage, /aria-label="Show screen 2 of 6"/);
+  assert.match(homePage, /aria-pressed="true"/);
 });
 
 test("keeps the theme toggle accessible without rendering a tooltip", () => {
@@ -239,13 +240,13 @@ test("lists the canonical homepage and every published project in the sitemap", 
 
 test("offers section navigation in page order with a single contact action", () => {
   assert.match(homePage, /aria-label="Main navigation"/);
+  const workLink = homePage.indexOf('href="/#work"');
   const experienceLink = homePage.indexOf('href="/#experience"');
   const stackLink = homePage.indexOf('href="/#tech-stack"');
-  const workLink = homePage.indexOf('href="/#work"');
 
-  assert.ok(experienceLink >= 0, "expected an Experience nav link");
+  assert.ok(workLink >= 0, "expected a Work nav link");
+  assert.ok(experienceLink > workLink, "expected Experience after Work");
   assert.ok(stackLink > experienceLink, "expected Stack after Experience");
-  assert.ok(workLink > stackLink, "expected Work after Stack");
   assert.match(homePage, />Let(?:&#x27;|')s talk/);
   assert.match(homePage, /aria-label="Open menu"/);
 });

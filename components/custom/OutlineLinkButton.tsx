@@ -1,5 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -24,7 +22,6 @@ export function OutlineLinkButton({ href, children, newTabHint, className }: Out
     >
       <a href={href} target="_blank" rel="noopener noreferrer">
         {children}
-        <ArrowUpRight aria-hidden="true" />
         <span className="sr-only">({newTabHint})</span>
       </a>
     </Button>

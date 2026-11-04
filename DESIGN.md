@@ -189,7 +189,7 @@ Maintain comfortable line lengths and consistent hierarchy across device sizes. 
 
 Use a centered, responsive content container with a maximum width of **1200px**. Full-viewport background colors may extend beyond the content container. Adapt horizontal padding to viewport width to prevent content touching the screen edge.
 
-Follow an **8px-based spacing scale**: 8, 16, 24, 32, 48, 64, and 96px. Use 24px standard grid gutters. Project cards follow a consistent responsive grid: **3 columns on desktop, 2 on tablet, and 1 on mobile**, with equal card alignment and spacing. Give sections breathing room without making the composition excessively sparse.
+Follow an **8px-based spacing scale**: 8, 16, 24, 32, 48, 64, and 96px. Use 24px standard grid gutters. Card grids, where used, follow **3 columns on desktop, 2 on tablet, and 1 on mobile**, with equal card alignment and spacing. Selected work uses a full-width editorial list instead (see Components). Give sections breathing room without making the composition excessively sparse.
 
 ## Elevation & Depth
 
@@ -204,11 +204,14 @@ Use a consistent **4px corner radius** on buttons, project cards, input fields, 
 - **Hero:** single-column and typography-led. A 64px square portrait (4px corners) sits beside a mono identity line, followed by the headline, a one-line subline, a primary and a secondary button, and icon links to professional profiles.
 - **Primary buttons:** solid muted burgundy background, white label, 4px corners; use a slightly darker burgundy on hover. Provide visible keyboard focus indication and distinct disabled states.
 - **Secondary buttons:** transparent background and a thin burgundy outline; use accessible light burgundy for text and outlines on dark backgrounds. Maintain the same 4px radius and subtle hover feedback.
-- **Project cards:** image-first composition with a consistent screenshot aspect ratio, followed by project title, concise description, neutral technology tags, and a clear project-detail link. Use theme-specific surface fills and no shadows.
+- **Selected work:** a full-width editorial list, not a card grid. Each project is separated by 1px tonal rules and shows its screens first, in their real shape, inside a neutral `tag` frame. Mobile apps show every screen side by side at the true phone ratio (the first three on small screens). Web apps show one 16:9 screen with real thumbnails the visitor clicks to switch (`aria-pressed`, no autoplay, a 150ms crossfade that is instant under reduced motion). Below: title, the role on the project (e.g. "Mobile Developer · Aonic"), a one-line summary, neutral technology tags and a "View project" link. Longer detail belongs on the project page.
+- **More projects:** the remaining projects as a compact list of rows (title, project type, arrow) under 1px rules; the title and arrow turn burgundy on hover.
 - **Navigation:** horizontal bar with the A_ cursor mark and name aligned left, and section links, a secondary "Let's talk" button and the theme switcher aligned right. At the top of the page the bar is transparent with no container. Once the page scrolls, it floats as a functional container: solid `surface` fill, 1px tonal border, 4px corners, no blur or shadow. It hides on scroll down and returns on scroll up, but never while it holds keyboard focus. A 2px burgundy underline marks the section in view (`aria-current`). Project pages show a mono breadcrumb (`/ work / <slug>`). On mobile, use a hamburger that opens a full-screen solid menu with large links.
 - **Navigation motion:** limited to the floating transition, the hide/show slide, the active-underline slide and a cursor blink on logo hover/focus. All of it becomes instant under `prefers-reduced-motion`.
 - **Inputs:** filled neutral surfaces, labels above controls, 4px corners, and no visible default outline border. Use a highly visible burgundy-toned focus indicator; make placeholders subordinate to labels.
 - **Technology tags:** compact filled-neutral chips with secondary text, 4px corners, and no borders or shadows.
+
+- **Arrows:** use an arrow icon only where it is the only cue that text is clickable or shows direction: More projects rows (→) and the project page back link (←). Do not add arrows to filled or outlined buttons, or to text links that already read as links.
 
 ## Do's and Don'ts
 
