@@ -1,58 +1,70 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import { featuredProjects, type FeaturedProject } from "@/data/featured-projects";
-import { cn } from "@/lib/utils";
+import { ScreenGallery } from "@/components/custom/ScreenGallery";
+import { TechTagList } from "@/components/custom/TechTagList";
+import { featuredSlugs, formatCredit, formatProjectType, getProject, projects, type Project } from "@/data/projects";
 
-function ProjectVisual({ project }: { project: FeaturedProject }) {
-  const imageDescription = project.slug === "lq-studio"
-    ? "LQ Studio booking screen"
-    : project.slug === "e-wedding"
-      ? "Wedding RSVP screen"
-      : `${project.title} product screen`;
+const featuredProjects = featuredSlugs
+  .map((slug) => getProject(slug))
+  .filter((project): project is Project => project !== undefined);
+const moreProjects = projects.filter(({ slug }) => !(featuredSlugs as readonly string[]).includes(slug));
 
-  return (
-    <div className={cn("grid h-full min-h-72 items-center gap-2 overflow-hidden rounded-lg bg-secondary p-4 sm:min-h-96 sm:gap-4 sm:p-8", project.imageFormat === "desktop" ? "grid-cols-2" : "grid-cols-3")} aria-label={`${project.title} product screens`}>
-      {project.images.map((image, index) => (
-        <div key={image} aria-label={project.imageFormat === "desktop" ? `${project.title} desktop screen ${index + 1}` : undefined} className={cn("relative min-w-0 overflow-hidden rounded-md bg-card", project.imageFormat === "desktop" ? "aspect-video first:col-span-2" : "aspect-[3/4] even:translate-y-5")}>
-          <Image src={image} alt={`${imageDescription} ${index + 1}`} fill sizes={project.imageFormat === "desktop" ? "(min-width: 1024px) 480px, 80vw" : "(min-width: 1024px) 170px, 30vw"} className={project.imageFormat === "desktop" ? "object-contain" : "object-cover object-top"} />
-        </div>
-      ))}
-    </div>
-  );
-}
+const linkClass =
+  "inline-flex min-h-11 items-center rounded-sm text-label-lg font-semibold text-primary-text underline-offset-4 hover:underline";
 
 export function SelectedWork() {
   return (
     <section id="work" aria-labelledby="work-heading" className="w-full scroll-mt-24 py-16 md:py-24">
-      <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
-        <h2 id="work-heading" className="max-w-xl text-heading">Selected work</h2>
-        <p className="max-w-md text-secondary-foreground">Products shaped around real work, from field tools to booking and personal projects.</p>
-      </div>
-      <div className="mt-10 grid gap-6 md:mt-12">
-        {featuredProjects.map((project, index) => (
-          <article key={project.slug} className="grid min-w-0 overflow-hidden rounded-xl bg-card lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-            <div className="flex min-w-0 flex-col p-6 sm:p-10 lg:p-12">
-              <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
-                <span aria-hidden="true" className="font-mono text-2xl font-semibold text-brand-secondary">{String(index + 1).padStart(2, "0")}</span>
-                <p className="text-sm text-secondary-foreground">{project.meta}</p>
+      <h2 id="work-heading" className="text-headline-lg">Selected work</h2>
+
+      <ul className="mt-12 border-t border-border">
+        {featuredProjects.map((project) => (
+          <li key={project.slug} className="border-b border-border py-12">
+            <article aria-labelledby={`${project.slug}-title`}>
+              <ScreenGallery title={project.title} format={project.format} screens={project.screens} />
+
+              <div className="mt-8 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2">
+                <h3 id={`${project.slug}-title`} className="text-headline-md">{project.title}</h3>
+                <p className="text-label-md text-muted-foreground">{formatCredit(project)}</p>
               </div>
-              <h3 className="mt-7 text-heading-md md:text-heading">{project.title}</h3>
-              <p className="mt-4 max-w-lg text-body-lg text-foreground">{project.statement}</p>
-              <p className="mt-5 max-w-lg text-secondary-foreground">{project.contribution}</p>
-              <p className="mt-5 max-w-lg text-sm leading-6 text-secondary-foreground"><span className="font-medium text-foreground">Outcome: </span>{project.outcome}</p>
-              <ul aria-label={`${project.title} technologies`} className="mt-7 flex flex-wrap gap-2">
-                {project.technologies.map((technology) => <li key={technology} className="rounded-sm bg-secondary px-3 py-1.5 text-sm text-secondary-foreground">{technology}</li>)}
-              </ul>
-              <Link href={`/projects/${project.slug}`} className="mt-8 inline-flex min-h-11 w-fit items-center gap-2 font-medium text-link underline-offset-4 transition-colors duration-fast hover:underline">
-                Explore project <ArrowUpRight aria-hidden="true" className="size-4" />
-              </Link>
-            </div>
-            <div className="min-w-0 p-4 pt-0 sm:p-6 sm:pt-0 lg:p-6 lg:pl-0"><ProjectVisual project={project} /></div>
-          </article>
+              <p className="mt-4 max-w-2xl text-body-lg text-muted-foreground">{project.summary}</p>
+
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
+                <TechTagList technologies={project.technologies} label={`${project.title} technologies`} />
+                <Link href={`/projects/${project.slug}`} className={linkClass}>
+                  View project
+                  <span className="sr-only">: {project.title}</span>
+                </Link>
+              </div>
+            </article>
+          </li>
         ))}
-      </div>
+      </ul>
+
+      {moreProjects.length > 0 && (
+        <div className="mt-16">
+          <h3 className="text-headline-sm">More projects</h3>
+          <ul className="mt-6 border-t border-border">
+            {moreProjects.map((project) => (
+              <li key={project.slug} className="border-b border-border">
+                <Link
+                  href={`/projects/${project.slug}`}
+                  className="group flex min-h-16 items-center justify-between gap-4 rounded-sm py-4"
+                >
+                  <span className="text-label-lg font-semibold text-foreground transition-colors duration-200 ease-standard group-hover:text-primary-text">
+                    {project.title}
+                  </span>
+                  <span className="flex shrink-0 items-center gap-4 text-label-md text-muted-foreground">
+                    {formatProjectType(project)}
+                    <ArrowRight aria-hidden="true" className="size-4 transition-colors duration-200 ease-standard group-hover:text-primary-text" />
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </section>
   );
 }
