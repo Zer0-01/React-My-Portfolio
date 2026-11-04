@@ -237,3 +237,22 @@ test("lists the canonical homepage and every published project in the sitemap", 
     assert.match(sitemap, new RegExp(`<loc>${url}</loc>`));
   }
 });
+
+test("offers numbered section navigation in page order with a single contact action", () => {
+  assert.match(homePage, /aria-label="Main navigation"/);
+  const experienceLink = homePage.indexOf('href="/#experience"');
+  const stackLink = homePage.indexOf('href="/#tech-stack"');
+  const workLink = homePage.indexOf('href="/#work"');
+
+  assert.ok(experienceLink >= 0, "expected an Experience nav link");
+  assert.ok(stackLink > experienceLink, "expected Stack after Experience");
+  assert.ok(workLink > stackLink, "expected Work after Stack");
+  assert.match(homePage, />Let(?:&#x27;|')s talk/);
+  assert.match(homePage, /aria-label="Open menu"/);
+});
+
+test("shows a breadcrumb back to selected work on project pages", () => {
+  assert.match(projectPage, /aria-label="Breadcrumb"/);
+  assert.match(projectPage, /aria-current="page"[^>]*>numeru</);
+  assert.doesNotMatch(homePage, /aria-label="Breadcrumb"/);
+});

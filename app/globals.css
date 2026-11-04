@@ -124,6 +124,14 @@
   --duration-fast: 150ms;
   --duration-normal: 200ms;
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Brand cursor: blinks only on logo hover/focus (neutralised by reduced motion below) */
+  --animate-cursor-blink: cursor-blink 1s steps(1, end) infinite;
+  @keyframes cursor-blink {
+    50% {
+      opacity: 0;
+    }
+  }
 }
 
 /* Light mode (user-selected alternative) */
