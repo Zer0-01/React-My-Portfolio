@@ -191,7 +191,7 @@ test("publishes project-specific metadata instead of inheriting the homepage tit
   assert.match(projectPage, /<title>Numeru \| Anas Zulkifli<\/title>/);
   assert.match(
     projectPage,
-    /<meta name="description" content="A multi-purpose calculator app with features for everyday calculations and financial planning\."/,
+    /<meta name="description" content="A calculator app for everyday maths and splitting bills\."/,
   );
   assert.match(
     projectPage,
@@ -201,6 +201,17 @@ test("publishes project-specific metadata instead of inheriting the homepage tit
     projectPage,
     /<meta property="og:url" content="https:\/\/anaszulkifli\.dev\/projects\/numeru"/,
   );
+});
+
+test("presents project facts, short sections and a next-project link", () => {
+  assert.match(projectPage, /<h1[^>]*>Numeru<\/h1>/);
+  assert.match(projectPage, /<dt[^>]*>Role<\/dt><dd[^>]*>Mobile Developer<\/dd>/);
+  assert.match(projectPage, /<dt[^>]*>For<\/dt><dd[^>]*>LakarSoft<\/dd>/);
+  assert.match(projectPage, />What I built</);
+  assert.match(projectPage, />Bill splitting</);
+  assert.doesNotMatch(projectPage, /Coming soon/);
+  assert.match(projectPage, /aria-label="Next project"/);
+  assert.match(projectPage, /href="\/projects\/vortex-academia"/);
 });
 
 test("allows search engines to crawl pages and rendering assets", () => {

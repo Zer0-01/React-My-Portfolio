@@ -3,12 +3,13 @@
 import { useId, useState } from "react";
 import Image from "next/image";
 
-import type { FeaturedProject } from "@/data/featured-projects";
+import type { Project } from "@/data/projects";
 import { cn } from "@/lib/utils";
 
-type ScreenGalleryProps = Pick<FeaturedProject, "title" | "format" | "screens">;
+type ScreenGalleryProps = Pick<Project, "title" | "format" | "screens">;
 
-/** Mobile apps: every screen side by side at the real phone ratio (first three on small viewports). */
+/** Mobile apps: every screen side by side at the real phone ratio (first three on small viewports).
+    All current phone captures are ~0.46 wide-to-tall, so one ratio fits them all. */
 function MobileScreens({ title, screens }: Omit<ScreenGalleryProps, "format">) {
   return (
     <ul className="grid grid-cols-3 gap-4 rounded-sm bg-tag p-4 sm:p-8 md:grid-cols-5">
@@ -94,5 +95,6 @@ function DesktopScreens({ title, screens }: Omit<ScreenGalleryProps, "format">) 
 }
 
 export function ScreenGallery({ format, ...props }: ScreenGalleryProps) {
+  if (props.screens.length === 0) return null;
   return format === "mobile" ? <MobileScreens {...props} /> : <DesktopScreens {...props} />;
 }

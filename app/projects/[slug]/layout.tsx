@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { projects } from "@/data/projects";
+import { getProject, projects } from "@/data/projects";
 import { siteLocale, siteName } from "@/lib/seo";
 
 interface ProjectLayoutProps {
@@ -17,15 +17,15 @@ export async function generateMetadata({
   params,
 }: Pick<ProjectLayoutProps, "params">): Promise<Metadata> {
   const { slug } = await params;
-  const project = projects.find((item) => item.slug === slug);
+  const project = getProject(slug);
 
   if (!project) {
     notFound();
   }
 
   const pathname = `/projects/${project.slug}`;
-  const image = project.heroImage ?? project.images?.[0] ?? "/profile-picture.jpeg";
-  const description = project.summary.split("\n")[0].trim();
+  const image = project.screens[0] ?? "/profile-picture.jpeg";
+  const description = project.summary;
 
   return {
     title: project.title,

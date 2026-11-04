@@ -210,10 +210,11 @@ Use a consistent **4px corner radius** on buttons, project cards, input fields, 
 - **Navigation motion:** limited to the floating transition, the hide/show slide, the active-underline slide and a cursor blink on logo hover/focus. All of it becomes instant under `prefers-reduced-motion`.
 - **Experience:** the same editorial rows as Selected work (1px rules, no cards). Short dates (`Sep 2024 – Now`) sit in their own left column and move above the company on mobile. Several roles at one company are joined by a thin line with square markers: filled burgundy for the current role, hollow for earlier ones. One line per contribution, starting with a verb.
 - **Tech stack:** the same editorial rows (1px rules, no cards). The group label (`label-lg`) sits in the same left column as Experience dates, with neutral technology tags on the right. No group descriptions, skill bars, percentages or logos. List only tools actually used.
+- **Project page:** title (`headline-display`) and the one-line summary, then a facts list in editorial rows (Role, For, Year, Platform, Stack, Links as secondary buttons), the same `ScreenGallery` as the home page (or the demo video), and short Overview, What I built and Outcome sections with the heading in the left column. "What I built" lists only what exists. The page ends with a Next project row; the navbar breadcrumb replaces a back link.
 - **Inputs:** filled neutral surfaces, labels above controls, 4px corners, and no visible default outline border. Use a highly visible burgundy-toned focus indicator; make placeholders subordinate to labels.
 - **Technology tags:** compact filled-neutral chips with secondary text, 4px corners, and no borders or shadows.
 
-- **Arrows:** use an arrow icon only where it is the only cue that text is clickable or shows direction: More projects rows (→) and the project page back link (←). Do not add arrows to filled or outlined buttons, or to text links that already read as links.
+- **Arrows:** use an arrow icon only where it is the only cue that text is clickable or shows direction: More projects rows (→) and the project page Next project link (→). Do not add arrows to filled or outlined buttons, or to text links that already read as links.
 
 ## Do's and Don'ts
 
