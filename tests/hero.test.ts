@@ -92,12 +92,13 @@ test("shows role progression and concrete contributions without product names", 
   assert.match(homePage, />Mobile Developer</);
   assert.match(homePage, />Junior Mobile Developer</);
   assert.match(homePage, />Software Engineer Intern</);
-  assert.match(homePage, /January 2026(?:<!-- -->)?–(?:<!-- -->)?Present/);
-  assert.match(homePage, /September 2024(?:<!-- -->)?–(?:<!-- -->)?December 2025/);
-  assert.match(homePage, /mobile commerce and field-utility app/);
-  assert.match(homePage, /executing automated drone missions/);
-  assert.match(homePage, /fuel-retail point-of-sale application/);
-  assert.match(homePage, /legacy native stock-management application to Flutter/);
+  assert.match(homePage, />Jan 2026 – Now</);
+  assert.match(homePage, />Sep 2024 – Dec 2025</);
+  assert.match(homePage, />Mar – Aug 2024</);
+  assert.match(homePage, /commerce and field app for farmers/);
+  assert.match(homePage, /preparing and running automated drone missions/);
+  assert.match(homePage, /fuel-retail point-of-sale app/);
+  assert.match(homePage, /legacy native stock-management app to Flutter/);
   assert.doesNotMatch(homePage, /MIST FA|Ronpos/);
 });
 
