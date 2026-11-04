@@ -9,7 +9,7 @@ import { BrandMark } from "@/components/custom/BrandMark";
 import { ContactButton } from "@/components/custom/ContactButton";
 import { MobileMenu } from "@/components/custom/MobileMenu";
 import { ThemeToggle } from "@/components/custom/ThemeToggle";
-import { formatNavIndex, navSectionIds, navSections } from "@/data/navigation";
+import { navSectionIds, navSections } from "@/data/navigation";
 import { useActiveSection } from "@/lib/useActiveSection";
 import { useHeaderScroll } from "@/lib/useHeaderScroll";
 import { cn } from "@/lib/utils";
@@ -19,7 +19,7 @@ const easeStandard = [0.4, 0, 0.2, 1] as const;
 function NavLinks({ activeId }: { activeId: string | null }) {
   return (
     <ul className="flex items-center gap-2">
-      {navSections.map((section, index) => {
+      {navSections.map((section) => {
         const isActive = activeId === section.id;
         return (
           <li key={section.id}>
@@ -27,13 +27,10 @@ function NavLinks({ activeId }: { activeId: string | null }) {
               href={`/#${section.id}`}
               aria-current={isActive ? "location" : undefined}
               className={cn(
-                "relative flex min-h-11 items-center gap-2 rounded-sm px-2 text-label-md text-muted-foreground transition-colors duration-200 ease-standard hover:text-foreground",
+                "relative flex min-h-11 items-center rounded-sm px-2 text-label-md text-muted-foreground transition-colors duration-200 ease-standard hover:text-foreground",
                 isActive && "text-foreground",
               )}
             >
-              <span aria-hidden="true" className="font-mono text-label-sm text-muted-foreground dark:text-gold">
-                {formatNavIndex(index)}
-              </span>
               {section.label}
               {isActive && (
                 <motion.span

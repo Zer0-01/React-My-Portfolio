@@ -177,13 +177,13 @@ Muted Burgundy (`#8C3547`) is the primary brand color for key actions and select
 
 Use **Space Grotesk** for all headings and **Inter** for body copy, navigation, labels, buttons, and metadata. Set headings with tight `-0.03em` letter spacing and `1.1–1.2` line height; set body with normal letter spacing and `1.6` line height.
 
-- **Hero:** `headline-display`, 64px / 700 on desktop; scale down responsively for smaller screens.
+- **Hero:** `headline-display`, 64px / 700 on desktop; scale down responsively for smaller screens. The headline ends with a static gold cursor block (the A_ mark) and may set one word in burgundy text.
 - **Sections:** `headline-lg` (40px / 600) or `headline-md` (32px / 600) depending on hierarchy.
 - **Project titles:** `headline-sm` (24px / 600).
 - **Body:** `body-md` (16px / 400), with `body-lg` (18px) for introductory copy and `body-sm` (14px) for supporting descriptions.
 - **Navigation and labels:** `label-md` (14px / 500), `label-lg` (16px / 600) for button labels, `label-sm` (12px / 500) for tags.
 
-Maintain comfortable line lengths and consistent hierarchy across device sizes. Do not substitute decorative fonts. **Exception:** the system monospace stack is reserved for the brand identity only: the logo name, breadcrumb and navigation index numerals (`01`, `02`…). Index numerals use muted gold in dark mode and secondary text in light mode, where gold falls below 4.5:1.
+Maintain comfortable line lengths and consistent hierarchy across device sizes. Do not substitute decorative fonts. **Exception:** the system monospace stack is reserved for the brand identity only: the logo name, the project breadcrumb and the hero identity line (name, role, location and local time).
 
 ## Layout
 
@@ -201,10 +201,11 @@ Use a consistent **4px corner radius** on buttons, project cards, input fields, 
 
 ## Components
 
+- **Hero:** single-column and typography-led. A 64px square portrait (4px corners) sits beside a mono identity line, followed by the headline, a one-line subline, a primary and a secondary button, and icon links to professional profiles.
 - **Primary buttons:** solid muted burgundy background, white label, 4px corners; use a slightly darker burgundy on hover. Provide visible keyboard focus indication and distinct disabled states.
 - **Secondary buttons:** transparent background and a thin burgundy outline; use accessible light burgundy for text and outlines on dark backgrounds. Maintain the same 4px radius and subtle hover feedback.
 - **Project cards:** image-first composition with a consistent screenshot aspect ratio, followed by project title, concise description, neutral technology tags, and a clear project-detail link. Use theme-specific surface fills and no shadows.
-- **Navigation:** horizontal bar with the A_ cursor mark and name aligned left, and numbered section links, a secondary "Let's talk" button and the theme switcher aligned right. At the top of the page the bar is transparent with no container. Once the page scrolls, it floats as a functional container: solid `surface` fill, 1px tonal border, 4px corners, no blur or shadow. It hides on scroll down and returns on scroll up, but never while it holds keyboard focus. A 2px burgundy underline marks the section in view (`aria-current`). Project pages show a mono breadcrumb (`/ work / <slug>`). On mobile, use a hamburger that opens a full-screen solid menu with large numbered links.
+- **Navigation:** horizontal bar with the A_ cursor mark and name aligned left, and section links, a secondary "Let's talk" button and the theme switcher aligned right. At the top of the page the bar is transparent with no container. Once the page scrolls, it floats as a functional container: solid `surface` fill, 1px tonal border, 4px corners, no blur or shadow. It hides on scroll down and returns on scroll up, but never while it holds keyboard focus. A 2px burgundy underline marks the section in view (`aria-current`). Project pages show a mono breadcrumb (`/ work / <slug>`). On mobile, use a hamburger that opens a full-screen solid menu with large links.
 - **Navigation motion:** limited to the floating transition, the hide/show slide, the active-underline slide and a cursor blink on logo hover/focus. All of it becomes instant under `prefers-reduced-motion`.
 - **Inputs:** filled neutral surfaces, labels above controls, 4px corners, and no visible default outline border. Use a highly visible burgundy-toned focus indicator; make placeholders subordinate to labels.
 - **Technology tags:** compact filled-neutral chips with secondary text, 4px corners, and no borders or shadows.

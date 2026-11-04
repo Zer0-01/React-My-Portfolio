@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { ContactButton } from "@/components/custom/ContactButton";
 import { ThemeToggle } from "@/components/custom/ThemeToggle";
 import { Button } from "@/components/ui/button";
-import { formatNavIndex, navSections } from "@/data/navigation";
+import { navSections } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
 interface MobileMenuProps {
@@ -44,7 +44,7 @@ export function MobileMenu({ open, onOpenChange, activeId }: MobileMenuProps) {
 
           <nav aria-label="Mobile navigation" className="mt-8">
             <ul className="flex flex-col gap-2">
-              {navSections.map((section, index) => {
+              {navSections.map((section) => {
                 const isActive = activeId === section.id;
                 return (
                   <li key={section.id}>
@@ -53,13 +53,10 @@ export function MobileMenu({ open, onOpenChange, activeId }: MobileMenuProps) {
                         href={`/#${section.id}`}
                         aria-current={isActive ? "location" : undefined}
                         className={cn(
-                          "flex min-h-14 items-baseline gap-4 rounded-sm font-heading text-headline-md text-muted-foreground transition-colors duration-200 ease-standard hover:text-foreground",
+                          "flex min-h-14 items-center rounded-sm font-heading text-headline-md text-muted-foreground transition-colors duration-200 ease-standard hover:text-foreground",
                           isActive && "text-foreground",
                         )}
                       >
-                        <span aria-hidden="true" className="font-mono text-label-md text-muted-foreground dark:text-gold">
-                          {formatNavIndex(index)}
-                        </span>
                         {section.label}
                       </Link>
                     </Dialog.Close>

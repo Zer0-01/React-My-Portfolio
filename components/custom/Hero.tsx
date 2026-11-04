@@ -1,47 +1,75 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github, Linkedin } from "lucide-react";
 
+import { LocalTime } from "@/components/custom/LocalTime";
+import { OutlineLinkButton } from "@/components/custom/OutlineLinkButton";
 import { Button } from "@/components/ui/button";
-
-const cvUrl =
-  "https://docs.google.com/document/d/1Ft2fg1_lMUqF9WITtQ9AK5HUFbL3ZzJd/edit?usp=drive_link&ouid=113577497045470240069&rtpof=true&sd=true";
+import { contactHref, cvHref, githubHref, linkedinHref } from "@/data/profile";
 
 const profileLinks = [
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/anas-zulkifli-mohd-jeffry" },
-  { label: "GitHub", href: "https://github.com/Zer0-01" },
-  { label: "View CV", href: cvUrl },
+  { label: "LinkedIn", href: linkedinHref, Icon: Linkedin },
+  { label: "GitHub", href: githubHref, Icon: Github },
 ];
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-heading" className="grid min-h-[calc(100svh-5rem)] w-full items-center gap-10 py-12 md:grid-cols-[minmax(0,1.35fr)_minmax(0,.65fr)] md:gap-16 md:py-16">
-      <div className="min-w-0">
-        <p className="text-sm font-medium text-link">Anas Zulkifli, Product-focused developer</p>
-        <h1 id="hero-heading" className="mt-6 max-w-3xl text-display text-foreground md:text-[clamp(3.5rem,5.2vw,5rem)]">
-          I build digital products from idea to launch.
-        </h1>
-        <p className="mt-7 max-w-xl text-body-lg text-secondary-foreground">
-          I turn real problems into clear, reliable digital experiences.
-        </p>
-        <div className="mt-9 flex flex-wrap gap-3">
-          <Button asChild className="h-12 bg-primary-action px-6 text-base font-medium text-primary-foreground shadow-none hover:bg-primary-active">
-            <a href="https://wa.me/601154066082" target="_blank" rel="noopener noreferrer"><ArrowUpRight aria-hidden="true" />Let&apos;s work together</a>
-          </Button>
-          <Button asChild variant="secondary" className="h-12 bg-card px-6 text-base font-medium text-foreground shadow-none hover:bg-accent">
-            <Link href="#work"><ArrowDown aria-hidden="true" />View my work</Link>
-          </Button>
+    <section aria-labelledby="hero-heading" className="flex min-h-[calc(100svh-5rem)] w-full flex-col justify-center py-16 md:py-24">
+      <div className="flex items-center gap-4">
+        <Image
+          src="/profile-picture.jpeg"
+          alt="Portrait of Anas Zulkifli"
+          width={64}
+          height={64}
+          priority
+          className="size-16 shrink-0 rounded-sm object-cover"
+        />
+        <div className="min-w-0 font-mono text-label-md">
+          <p className="font-semibold text-foreground">Anas Zulkifli</p>
+          <p className="text-muted-foreground">
+            Software Engineer <span aria-hidden="true">·</span> Kuala Lumpur <span aria-hidden="true">·</span> <LocalTime />
+          </p>
         </div>
-        <nav aria-label="Professional profiles" className="mt-9 flex flex-wrap gap-x-6 gap-y-3">
-          {profileLinks.map((link) => (
-            <a key={link.label} href={link.href} target="_blank" rel="noopener noreferrer" className="min-h-11 content-center text-sm text-secondary-foreground underline-offset-4 transition-colors duration-fast hover:text-link hover:underline">
-              {link.label}
-            </a>
-          ))}
-        </nav>
       </div>
-      <div className="relative mx-auto aspect-[4/5] w-full max-w-sm overflow-hidden rounded-xl bg-card md:max-w-none">
-        <Image src="/profile-picture.jpeg" alt="Portrait of Anas Zulkifli" fill priority sizes="(min-width: 768px) 34vw, 80vw" className="object-cover" />
+
+      <h1 id="hero-heading" className="mt-12 max-w-4xl text-headline-display text-foreground">
+        I build digital products from idea to <span className="text-primary-text">launch</span>
+        <span aria-hidden="true" className="ml-[0.06em] inline-block h-[0.09em] w-[0.5em] bg-gold" />
+      </h1>
+
+      <p className="mt-6 max-w-xl text-body-lg text-muted-foreground">
+        I design, build and ship web and mobile apps.
+      </p>
+
+      <div className="mt-8 flex flex-wrap items-center gap-4">
+        <Button
+          asChild
+          className="h-12 rounded-sm bg-primary px-6 text-label-lg font-semibold text-primary-foreground shadow-none transition-colors duration-200 ease-standard hover:bg-primary-hover"
+        >
+          <a href={contactHref} target="_blank" rel="noopener noreferrer">
+            Let&apos;s work together
+            <ArrowUpRight aria-hidden="true" />
+            <span className="sr-only">(opens WhatsApp in a new tab)</span>
+          </a>
+        </Button>
+        <OutlineLinkButton href={cvHref} newTabHint="opens in a new tab" className="h-12 px-6">
+          View CV
+        </OutlineLinkButton>
+
+        <ul className="flex items-center gap-2">
+          {profileLinks.map(({ label, href, Icon }) => (
+            <li key={label}>
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${label} (opens in a new tab)`}
+                className="flex size-11 items-center justify-center rounded-sm text-muted-foreground transition-colors duration-200 ease-standard hover:bg-tag hover:text-foreground"
+              >
+                <Icon aria-hidden="true" className="size-5" />
+              </a>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

@@ -55,22 +55,21 @@ after(() => {
 });
 
 test("introduces Anas as an end-to-end product builder", () => {
-  assert.match(homePage, /I build digital products from idea to launch\./);
-  assert.match(homePage, /I turn real problems into clear, reliable digital experiences/);
+  assert.match(homePage, /I build digital products from idea to <span[^>]*>launch<\/span>/);
+  assert.match(homePage, /I design, build and ship web and mobile apps\./);
   assert.match(homePage, /Product-focused developer/);
 });
 
 test("provides direct contact and portfolio actions", () => {
   assert.match(homePage, /href="https:\/\/wa\.me\/601154066082"/);
   assert.match(homePage, />Let(?:&#x27;|')s work together</);
-  assert.match(homePage, /href="#work"/);
-  assert.match(homePage, />View my work</);
+  assert.match(homePage, />View CV</);
+  assert.match(homePage, /Software Engineer/);
 });
 
 test("keeps professional profile links available without competing with the main actions", () => {
   assert.match(homePage, /href="https:\/\/www\.linkedin\.com\/in\/anas-zulkifli-mohd-jeffry"/);
   assert.match(homePage, /href="https:\/\/github\.com\/Zer0-01"/);
-  assert.match(homePage, />View CV</);
 });
 
 test("omits the standalone portfolio statistics section", () => {
@@ -238,7 +237,7 @@ test("lists the canonical homepage and every published project in the sitemap", 
   }
 });
 
-test("offers numbered section navigation in page order with a single contact action", () => {
+test("offers section navigation in page order with a single contact action", () => {
   assert.match(homePage, /aria-label="Main navigation"/);
   const experienceLink = homePage.indexOf('href="/#experience"');
   const stackLink = homePage.indexOf('href="/#tech-stack"');

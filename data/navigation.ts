@@ -11,9 +11,3 @@ export const navSections = [
 ] as const satisfies readonly NavSection[];
 
 export const navSectionIds = navSections.map(({ id }) => id);
-
-export const contactHref = "https://wa.me/601154066082";
-
-export function formatNavIndex(index: number): string {
-  return String(index + 1).padStart(2, "0");
-}
