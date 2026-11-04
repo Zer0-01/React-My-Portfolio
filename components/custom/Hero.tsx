@@ -3,7 +3,7 @@ import { Github, Linkedin } from "lucide-react";
 
 import { LocalTime } from "@/components/custom/LocalTime";
 import { OutlineLinkButton } from "@/components/custom/OutlineLinkButton";
-import { Button } from "@/components/ui/button";
+import { PrimaryLinkButton } from "@/components/custom/PrimaryLinkButton";
 import { contactHref, cvHref, githubHref, linkedinHref } from "@/data/profile";
 
 const profileLinks = [
@@ -41,15 +41,9 @@ export function Hero() {
       </p>
 
       <div className="mt-8 flex flex-wrap items-center gap-4">
-        <Button
-          asChild
-          className="h-12 rounded-sm bg-primary px-6 text-label-lg font-semibold text-primary-foreground shadow-none transition-colors duration-200 ease-standard hover:bg-primary-hover"
-        >
-          <a href={contactHref} target="_blank" rel="noopener noreferrer">
-            Let&apos;s work together
-            <span className="sr-only">(opens WhatsApp in a new tab)</span>
-          </a>
-        </Button>
+        <PrimaryLinkButton href={contactHref} newTabHint="opens WhatsApp in a new tab">
+          Let&apos;s work together
+        </PrimaryLinkButton>
         <OutlineLinkButton href={cvHref} newTabHint="opens in a new tab" className="h-12 px-6">
           View CV
         </OutlineLinkButton>

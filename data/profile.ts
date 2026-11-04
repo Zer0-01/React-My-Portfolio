@@ -7,4 +7,6 @@ export const linkedinHref = "https://www.linkedin.com/in/anas-zulkifli-mohd-jeff
 
 export const githubHref = "https://github.com/Zer0-01";
 
+export const email = "anas.zulkifli2001@gmail.com";
+
 export const timeZone = "Asia/Kuala_Lumpur";

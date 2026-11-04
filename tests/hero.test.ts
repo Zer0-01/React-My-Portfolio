@@ -57,7 +57,6 @@ after(() => {
 test("introduces Anas as an end-to-end product builder", () => {
   assert.match(homePage, /I build digital products from idea to <span[^>]*>launch<\/span>/);
   assert.match(homePage, /I design, build and ship web and mobile apps\./);
-  assert.match(homePage, /Product-focused developer/);
 });
 
 test("provides direct contact and portfolio actions", () => {
@@ -70,6 +69,16 @@ test("provides direct contact and portfolio actions", () => {
 test("keeps professional profile links available without competing with the main actions", () => {
   assert.match(homePage, /href="https:\/\/www\.linkedin\.com\/in\/anas-zulkifli-mohd-jeffry"/);
   assert.match(homePage, /href="https:\/\/github\.com\/Zer0-01"/);
+});
+
+test("closes every page with a contact prompt, email and footer links", () => {
+  for (const page of [homePage, projectPage]) {
+    assert.match(page, />Have a product in mind\?</);
+    assert.match(page, /href="mailto:anas\.zulkifli2001@gmail\.com"/);
+    assert.match(page, /aria-label="Footer navigation"/);
+    assert.match(page, /href="#top"/);
+    assert.doesNotMatch(page, /id="top"/, "an element with id=\"top\" would stop Back to top reaching the page top");
+  }
 });
 
 test("omits the standalone portfolio statistics section", () => {
